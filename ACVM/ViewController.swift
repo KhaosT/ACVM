@@ -100,7 +100,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
             "-device", "ramfb",
             "-device", "nec-usb-xhci",
             "-device", "usb-kbd",
-            "-device", "usb-mouse",
+            "-device", "usb-tablet",
             "-nic", "user,model=virtio",
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(mainImage.path),if=none,id=boot",
