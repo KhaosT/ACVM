@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC032B622574D9A6002CE035 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B612574D9A6002CE035 /* AppDelegate.swift */; };
+		CC032B642574D9A6002CE035 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B632574D9A6002CE035 /* ViewController.swift */; };
+		CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC032B652574D9A7002CE035 /* Assets.xcassets */; };
+		CC032B692574D9A7002CE035 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC032B672574D9A7002CE035 /* Main.storyboard */; };
+		CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */ = {isa = PBXBuildFile; fileRef = CC032B722574DAB0002CE035 /* qemu-system-aarch64 */; };
+		CC032B7D2574DDD6002CE035 /* pc-bios in Resources */ = {isa = PBXBuildFile; fileRef = CC032B7C2574DDD6002CE035 /* pc-bios */; };
+		CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */ = {isa = PBXBuildFile; fileRef = CC032B802574DE69002CE035 /* QEMU_EFI.fd */; };
+		CC032B842574E137002CE035 /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B832574E137002CE035 /* FileDropView.swift */; };
+		CC032B9A2574EADD002CE035 /* libffi.7.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8A2574EAD5002CE035 /* libffi.7.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032B9C2574EADE002CE035 /* libgio-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B882574EAD5002CE035 /* libgio-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032B9D2574EADF002CE035 /* libglib-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B872574EAD5002CE035 /* libglib-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032B9E2574EAE1002CE035 /* libgmodule-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8D2574EAD5002CE035 /* libgmodule-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032B9F2574EAE2002CE035 /* libgobject-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8C2574EAD5002CE035 /* libgobject-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032BA02574EAE3002CE035 /* libintl.8.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B892574EAD5002CE035 /* libintl.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032BA12574EAE4002CE035 /* libpcre.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8B2574EAD5002CE035 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032BA22574EAE5002CE035 /* libpixman-1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC032BA32574EAE6002CE035 /* libusb-1.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC032B9B2574EADD002CE035 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CC032B9A2574EADD002CE035 /* libffi.7.dylib in Embed Libraries */,
+				CC032BA12574EAE4002CE035 /* libpcre.1.dylib in Embed Libraries */,
+				CC032B9F2574EAE2002CE035 /* libgobject-2.0.0.dylib in Embed Libraries */,
+				CC032BA32574EAE6002CE035 /* libusb-1.0.0.dylib in Embed Libraries */,
+				CC032B9C2574EADE002CE035 /* libgio-2.0.0.dylib in Embed Libraries */,
+				CC032BA02574EAE3002CE035 /* libintl.8.dylib in Embed Libraries */,
+				CC032BA22574EAE5002CE035 /* libpixman-1.0.dylib in Embed Libraries */,
+				CC032B9D2574EADF002CE035 /* libglib-2.0.0.dylib in Embed Libraries */,
+				CC032B9E2574EAE1002CE035 /* libgmodule-2.0.0.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CC032B5E2574D9A6002CE035 /* ACVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC032B612574D9A6002CE035 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC032B632574D9A6002CE035 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC032B652574D9A7002CE035 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC032B682574D9A7002CE035 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC032B6A2574D9A7002CE035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC032B6B2574D9A7002CE035 /* ACVM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ACVM.entitlements; sourceTree = "<group>"; };
+		CC032B722574DAB0002CE035 /* qemu-system-aarch64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-system-aarch64"; sourceTree = "<group>"; };
+		CC032B7C2574DDD6002CE035 /* pc-bios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "pc-bios"; sourceTree = "<group>"; };
+		CC032B802574DE69002CE035 /* QEMU_EFI.fd */ = {isa = PBXFileReference; lastKnownFileType = file; path = QEMU_EFI.fd; sourceTree = "<group>"; };
+		CC032B832574E137002CE035 /* FileDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropView.swift; sourceTree = "<group>"; };
+		CC032B872574EAD5002CE035 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libglib-2.0.0.dylib"; sourceTree = "<group>"; };
+		CC032B882574EAD5002CE035 /* libgio-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgio-2.0.0.dylib"; sourceTree = "<group>"; };
+		CC032B892574EAD5002CE035 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libintl.8.dylib; sourceTree = "<group>"; };
+		CC032B8A2574EAD5002CE035 /* libffi.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libffi.7.dylib; sourceTree = "<group>"; };
+		CC032B8B2574EAD5002CE035 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpcre.1.dylib; sourceTree = "<group>"; };
+		CC032B8C2574EAD5002CE035 /* libgobject-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgobject-2.0.0.dylib"; sourceTree = "<group>"; };
+		CC032B8D2574EAD5002CE035 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
+		CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpixman-1.0.dylib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC032B5B2574D9A6002CE035 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC032B552574D9A6002CE035 = {
+			isa = PBXGroup;
+			children = (
+				CC032B862574EAC7002CE035 /* Dylibs */,
+				CC032B602574D9A6002CE035 /* ACVM */,
+				CC032B5F2574D9A6002CE035 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC032B5F2574D9A6002CE035 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC032B5E2574D9A6002CE035 /* ACVM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC032B602574D9A6002CE035 /* ACVM */ = {
+			isa = PBXGroup;
+			children = (
+				CC032B612574D9A6002CE035 /* AppDelegate.swift */,
+				CC032B632574D9A6002CE035 /* ViewController.swift */,
+				CC032B832574E137002CE035 /* FileDropView.swift */,
+				CC032B652574D9A7002CE035 /* Assets.xcassets */,
+				CC032B672574D9A7002CE035 /* Main.storyboard */,
+				CC032B6A2574D9A7002CE035 /* Info.plist */,
+				CC032B6B2574D9A7002CE035 /* ACVM.entitlements */,
+				CC032B7F2574DE50002CE035 /* EFI */,
+				CC032B7C2574DDD6002CE035 /* pc-bios */,
+				CC032B722574DAB0002CE035 /* qemu-system-aarch64 */,
+			);
+			path = ACVM;
+			sourceTree = "<group>";
+		};
+		CC032B7F2574DE50002CE035 /* EFI */ = {
+			isa = PBXGroup;
+			children = (
+				CC032B802574DE69002CE035 /* QEMU_EFI.fd */,
+			);
+			path = EFI;
+			sourceTree = "<group>";
+		};
+		CC032B862574EAC7002CE035 /* Dylibs */ = {
+			isa = PBXGroup;
+			children = (
+				CC032B8A2574EAD5002CE035 /* libffi.7.dylib */,
+				CC032B882574EAD5002CE035 /* libgio-2.0.0.dylib */,
+				CC032B872574EAD5002CE035 /* libglib-2.0.0.dylib */,
+				CC032B8D2574EAD5002CE035 /* libgmodule-2.0.0.dylib */,
+				CC032B8C2574EAD5002CE035 /* libgobject-2.0.0.dylib */,
+				CC032B892574EAD5002CE035 /* libintl.8.dylib */,
+				CC032B8B2574EAD5002CE035 /* libpcre.1.dylib */,
+				CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */,
+				CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */,
+			);
+			path = Dylibs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC032B5D2574D9A6002CE035 /* ACVM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC032B6E2574D9A7002CE035 /* Build configuration list for PBXNativeTarget "ACVM" */;
+			buildPhases = (
+				CC032B5A2574D9A6002CE035 /* Sources */,
+				CC032B5B2574D9A6002CE035 /* Frameworks */,
+				CC032B5C2574D9A6002CE035 /* Resources */,
+				CC032B9B2574EADD002CE035 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ACVM;
+			productName = ACVM;
+			productReference = CC032B5E2574D9A6002CE035 /* ACVM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC032B562574D9A6002CE035 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					CC032B5D2574D9A6002CE035 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = CC032B592574D9A6002CE035 /* Build configuration list for PBXProject "ACVM" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC032B552574D9A6002CE035;
+			productRefGroup = CC032B5F2574D9A6002CE035 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC032B5D2574D9A6002CE035 /* ACVM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC032B5C2574D9A6002CE035 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC032B7D2574DDD6002CE035 /* pc-bios in Resources */,
+				CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */,
+				CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */,
+				CC032B692574D9A7002CE035 /* Main.storyboard in Resources */,
+				CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC032B5A2574D9A6002CE035 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC032B642574D9A6002CE035 /* ViewController.swift in Sources */,
+				CC032B622574D9A6002CE035 /* AppDelegate.swift in Sources */,
+				CC032B842574E137002CE035 /* FileDropView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CC032B672574D9A7002CE035 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC032B682574D9A7002CE035 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC032B6C2574D9A7002CE035 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC032B6D2574D9A7002CE035 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CC032B6F2574D9A7002CE035 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ACVM/ACVM.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7C2EXSD3YV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = ACVM/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dylibs",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oltica.ACVM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CC032B702574D9A7002CE035 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ACVM/ACVM.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7C2EXSD3YV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = ACVM/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dylibs",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oltica.ACVM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC032B592574D9A6002CE035 /* Build configuration list for PBXProject "ACVM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC032B6C2574D9A7002CE035 /* Debug */,
+				CC032B6D2574D9A7002CE035 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC032B6E2574D9A7002CE035 /* Build configuration list for PBXNativeTarget "ACVM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC032B6F2574D9A7002CE035 /* Debug */,
+				CC032B702574D9A7002CE035 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC032B562574D9A6002CE035 /* Project object */;
+}
