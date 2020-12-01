@@ -176,12 +176,10 @@ class ViewController: NSViewController, FileDropViewDelegate {
     }
     
     private var displayAdaptor: String {
-        let adjustedDisplayText = graphicPopupButton.titleOfSelectedItem;
-        guard adjustedDisplayText != nil else {
+        guard let adjustedDisplayText = graphicPopupButton.titleOfSelectedItem else {
             return "ramfb"
         }
-        
-        return adjustedDisplayText!
+        return adjustedDisplayText
     }
     
     func fileDropView(_ view: FileDropView, didUpdate contentURL: URL) {
