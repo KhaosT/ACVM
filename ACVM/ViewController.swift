@@ -119,7 +119,9 @@ class ViewController: NSViewController, FileDropViewDelegate {
             "-nic", "user,model=virtio",
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
-            "-device", "nvme,drive=boot,serial=boot"
+            "-device", "nvme,drive=boot,serial=boot",
+            "-device", "intel-hda",
+            "-device", "hda-duplex"
         ]
         
         if let cdImageURL = cdImageURL {
