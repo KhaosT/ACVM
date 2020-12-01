@@ -11,11 +11,14 @@ class ViewController: NSViewController, FileDropViewDelegate {
 
     private var qemuProcess: Process?
     
+    @IBOutlet weak var unhideMousePointer: NSButton!
     @IBOutlet weak var mainImage: FileDropView!
     @IBOutlet weak var cdImage: FileDropView!
     
     @IBOutlet weak var cpuTextField: NSTextField!
     @IBOutlet weak var ramTextField: NSTextField!
+
+    @IBOutlet weak var graphicPopupButton: NSPopUpButton!
     
     private var mainImageURL: URL?
     private var cdImageURL: URL?
@@ -51,15 +54,27 @@ class ViewController: NSViewController, FileDropViewDelegate {
             cdImage.isEnabled = false
             cpuTextField.isEnabled = false
             ramTextField.isEnabled = false
+            unhideMousePointer.isEnabled = false;
+            graphicPopupButton.isEnabled = false;
         } else {
             actionButton.title = "Start"
             mainImage.isEnabled = true
             cdImage.isEnabled = true
             cpuTextField.isEnabled = true
             ramTextField.isEnabled = true
+            unhideMousePointer.isEnabled = true;
+            graphicPopupButton.isEnabled = true;
         }
+        
     }
     
+    @IBAction func onGraphicChange(_ sender: Any) {
+        if displayAdaptor == "ramfb"{
+            unhideMousePointer.state = .off;
+        } else {
+            unhideMousePointer.state = .on;
+        }
+    }
     @objc
     private func processDidTerminate(_ notification: Notification) {
         guard let process = notification.object as? Process,
@@ -97,14 +112,16 @@ class ViewController: NSViewController, FileDropViewDelegate {
             "-smp", numberOfCores,
             "-m", ramSize,
             "-bios", efiURL.path,
-            "-device", "ramfb",
-            "-device", "nec-usb-xhci",
+            "-device", displayAdaptor,
+            "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
             "-nic", "user,model=virtio",
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
-            "-device", "nvme,drive=boot,serial=boot"
+            "-device", "nvme,drive=boot,serial=boot",
+            "-device", "intel-hda",
+            "-device", "hda-duplex"
         ]
         
         if let cdImageURL = cdImageURL {
@@ -113,7 +130,11 @@ class ViewController: NSViewController, FileDropViewDelegate {
                 "-device", "usb-storage,drive=cdimage"
             ]
         }
-        
+        if unhideMousePointer.state == .on {
+            arguments += [
+                "-display","cocoa,show-cursor=on"
+            ]
+        }
         process.arguments = arguments
         process.qualityOfService = .userInteractive
         
@@ -152,6 +173,13 @@ class ViewController: NSViewController, FileDropViewDelegate {
         }
         
         return adjustedRamText
+    }
+    
+    private var displayAdaptor: String {
+        guard let adjustedDisplayText = graphicPopupButton.titleOfSelectedItem else {
+            return "ramfb"
+        }
+        return adjustedDisplayText
     }
     
     func fileDropView(_ view: FileDropView, didUpdate contentURL: URL) {

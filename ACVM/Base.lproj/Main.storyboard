@@ -793,6 +793,45 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eyA-23-BE0">
+                                <rect key="frame" x="17" y="50" width="78" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="ramfb" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YF5-mj-qHo" id="rHc-tg-9oX">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="pc2-sM-2e3">
+                                        <items>
+                                            <menuItem title="ramfb" state="on" id="YF5-mj-qHo">
+                                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="virtio-gpu" id="6KE-VE-dyJ"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="onGraphicChange:" target="XfG-lQ-9wD" id="UoW-L0-Ymp"/>
+                                </connections>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjh-4s-Euh">
+                                <rect key="frame" x="20" y="82" width="52" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Display:" id="yff-dJ-JPm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVe-8n-UQW">
+                                <rect key="frame" x="18" y="19" width="158" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="unhide mouse pointer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Lty-sT-eLH">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="l96-cW-Oo1" firstAttribute="top" secondItem="CKQ-Sl-jWk" secondAttribute="bottom" constant="8" symbolic="YES" id="55M-ZB-rBQ"/>
@@ -806,7 +845,7 @@
                             <constraint firstItem="CKQ-Sl-jWk" firstAttribute="leading" secondItem="lTx-q4-rbw" secondAttribute="trailing" constant="163" id="ahv-t8-A1r"/>
                             <constraint firstItem="zQG-wZ-gHZ" firstAttribute="leading" secondItem="CKQ-Sl-jWk" secondAttribute="trailing" constant="96" id="d7R-vZ-b6a"/>
                             <constraint firstAttribute="trailing" secondItem="ZfN-6V-hsb" secondAttribute="trailing" constant="405" id="mye-zt-8xh"/>
-                            <constraint firstItem="lTx-q4-rbw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" symbolic="YES" id="nWp-YD-XJs"/>
+                            <constraint firstItem="lTx-q4-rbw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="nWp-YD-XJs"/>
                             <constraint firstItem="5Jw-H1-e2k" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="nit-8u-fj7"/>
                             <constraint firstItem="CKQ-Sl-jWk" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="qgc-ZI-gA5"/>
                             <constraint firstItem="zQG-wZ-gHZ" firstAttribute="top" secondItem="CKQ-Sl-jWk" secondAttribute="top" id="sda-iT-zVC"/>
@@ -821,8 +860,10 @@
                         <outlet property="actionButton" destination="5Jw-H1-e2k" id="AHa-VW-YYV"/>
                         <outlet property="cdImage" destination="zQG-wZ-gHZ" id="QDM-M1-vbP"/>
                         <outlet property="cpuTextField" destination="Way-xL-wGg" id="iYD-hs-KTb"/>
+                        <outlet property="graphicPopupButton" destination="eyA-23-BE0" id="kU6-5I-qFF"/>
                         <outlet property="mainImage" destination="CKQ-Sl-jWk" id="gcP-hl-jca"/>
                         <outlet property="ramTextField" destination="2mc-rZ-jyM" id="HI9-uy-6Oa"/>
+                        <outlet property="unhideMousePointer" destination="jVe-8n-UQW" id="wUj-jM-uwv"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
