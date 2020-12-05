@@ -24,6 +24,7 @@
 		CC032BA12574EAE4002CE035 /* libpcre.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8B2574EAD5002CE035 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CC032BA22574EAE5002CE035 /* libpixman-1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CC032BA32574EAE6002CE035 /* libusb-1.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC7C0FF4257B487C000512DD /* qemu-img in Resources */ = {isa = PBXBuildFile; fileRef = CC7C0FF3257B487C000512DD /* qemu-img */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		CC032B8D2574EAD5002CE035 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
 		CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
 		CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpixman-1.0.dylib"; sourceTree = "<group>"; };
+		CC7C0FF3257B487C000512DD /* qemu-img */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-img"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				CC032B6B2574D9A7002CE035 /* ACVM.entitlements */,
 				CC032B7F2574DE50002CE035 /* EFI */,
 				CC032B7C2574DDD6002CE035 /* pc-bios */,
+				CC7C0FF3257B487C000512DD /* qemu-img */,
 				CC032B722574DAB0002CE035 /* qemu-system-aarch64 */,
 			);
 			path = ACVM;
@@ -202,6 +205,7 @@
 				CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */,
 				CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */,
 				CC032B692574D9A7002CE035 /* Main.storyboard in Resources */,
+				CC7C0FF4257B487C000512DD /* qemu-img in Resources */,
 				CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

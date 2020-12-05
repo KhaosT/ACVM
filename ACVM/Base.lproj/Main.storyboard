@@ -832,12 +832,27 @@ CA
                                     <action selector="onGraphicChange:" target="XfG-lQ-9wD" id="UoW-L0-Ymp"/>
                                 </connections>
                             </popUpButton>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="109-I3-PgL">
+                                <rect key="frame" x="364" y="20" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="rug-xH-H3R"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="NIC Options" drawsBackground="YES" id="qUm-bh-Acm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="netForwardDidChange:" target="XfG-lQ-9wD" id="hmA-NI-8yC"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="l96-cW-Oo1" firstAttribute="top" secondItem="CKQ-Sl-jWk" secondAttribute="bottom" constant="8" symbolic="YES" id="55M-ZB-rBQ"/>
                             <constraint firstItem="gCD-Dm-pIJ" firstAttribute="centerX" secondItem="zQG-wZ-gHZ" secondAttribute="centerX" id="5Yu-D4-qSz"/>
                             <constraint firstItem="2mc-rZ-jyM" firstAttribute="top" secondItem="lTx-q4-rbw" secondAttribute="bottom" constant="8" symbolic="YES" id="BHh-xt-mRg"/>
                             <constraint firstAttribute="bottom" secondItem="jVe-8n-UQW" secondAttribute="bottom" constant="20" symbolic="YES" id="FMd-w2-K3t"/>
+                            <constraint firstAttribute="trailing" secondItem="109-I3-PgL" secondAttribute="trailing" constant="20" symbolic="YES" id="Fp4-SY-UhA"/>
                             <constraint firstItem="jVe-8n-UQW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="LxG-LG-kty"/>
                             <constraint firstItem="ZfN-6V-hsb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="NQw-Gd-Xmo"/>
                             <constraint firstItem="l96-cW-Oo1" firstAttribute="centerX" secondItem="CKQ-Sl-jWk" secondAttribute="centerX" id="Pyf-qq-XY6"/>
@@ -847,6 +862,7 @@ CA
                             <constraint firstItem="CKQ-Sl-jWk" firstAttribute="leading" secondItem="lTx-q4-rbw" secondAttribute="trailing" constant="163" id="ahv-t8-A1r"/>
                             <constraint firstItem="zQG-wZ-gHZ" firstAttribute="leading" secondItem="CKQ-Sl-jWk" secondAttribute="trailing" constant="96" id="d7R-vZ-b6a"/>
                             <constraint firstItem="eyA-23-BE0" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="iOa-MC-aRn"/>
+                            <constraint firstAttribute="bottom" secondItem="109-I3-PgL" secondAttribute="bottom" constant="20" symbolic="YES" id="jIv-UR-NpH"/>
                             <constraint firstAttribute="trailing" secondItem="ZfN-6V-hsb" secondAttribute="trailing" constant="405" id="mye-zt-8xh"/>
                             <constraint firstItem="lTx-q4-rbw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="nWp-YD-XJs"/>
                             <constraint firstItem="5Jw-H1-e2k" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="nit-8u-fj7"/>
@@ -865,9 +881,10 @@ CA
                     <connections>
                         <outlet property="actionButton" destination="5Jw-H1-e2k" id="AHa-VW-YYV"/>
                         <outlet property="cdImage" destination="zQG-wZ-gHZ" id="QDM-M1-vbP"/>
-                        <outlet property="cpuTextField" destination="Way-xL-wGg" id="iYD-hs-KTb"/>
+                        <outlet property="cpuTextField" destination="Way-xL-wGg" id="EEK-pQ-u5O"/>
                         <outlet property="graphicPopupButton" destination="eyA-23-BE0" id="kU6-5I-qFF"/>
                         <outlet property="mainImage" destination="CKQ-Sl-jWk" id="gcP-hl-jca"/>
+                        <outlet property="nicOptionsTextField" destination="109-I3-PgL" id="Mpm-U5-yC3"/>
                         <outlet property="ramTextField" destination="2mc-rZ-jyM" id="HI9-uy-6Oa"/>
                         <outlet property="unhideMousePointer" destination="jVe-8n-UQW" id="wUj-jM-uwv"/>
                     </connections>

@@ -17,7 +17,8 @@ class ViewController: NSViewController, FileDropViewDelegate {
     
     @IBOutlet weak var cpuTextField: NSTextField!
     @IBOutlet weak var ramTextField: NSTextField!
-
+    @IBOutlet weak var nicOptionsTextField: NSTextField!
+    
     @IBOutlet weak var graphicPopupButton: NSPopUpButton!
     
     private var mainImageURL: URL?
@@ -33,6 +34,10 @@ class ViewController: NSViewController, FileDropViewDelegate {
             let contentURL = URL(fileURLWithPath: mainImageFilePath)
             mainImageURL = contentURL
             mainImage.contentURL = contentURL
+        }
+        
+        if let nicOptions = UserDefaults.standard.string(forKey: Constants.nicOptions) {
+            nicOptionsTextField.stringValue = nicOptions
         }
         
         updateStates()
@@ -54,16 +59,18 @@ class ViewController: NSViewController, FileDropViewDelegate {
             cdImage.isEnabled = false
             cpuTextField.isEnabled = false
             ramTextField.isEnabled = false
-            unhideMousePointer.isEnabled = false;
-            graphicPopupButton.isEnabled = false;
+            unhideMousePointer.isEnabled = false
+            graphicPopupButton.isEnabled = false
+            nicOptionsTextField.isEnabled = false
         } else {
             actionButton.title = "Start"
             mainImage.isEnabled = true
             cdImage.isEnabled = true
             cpuTextField.isEnabled = true
             ramTextField.isEnabled = true
-            unhideMousePointer.isEnabled = true;
-            graphicPopupButton.isEnabled = true;
+            unhideMousePointer.isEnabled = true
+            graphicPopupButton.isEnabled = true
+            nicOptionsTextField.isEnabled = true
         }
         
     }
@@ -75,6 +82,24 @@ class ViewController: NSViewController, FileDropViewDelegate {
             unhideMousePointer.state = .on;
         }
     }
+    
+    @IBAction func netForwardDidChange(_ sender: Any) {
+        updateNICOptions()
+    }
+    
+    private func updateNICOptions() {
+        if nicOptionsTextField.stringValue.isEmpty {
+            UserDefaults.standard.removeObject(
+                forKey: Constants.nicOptions
+            )
+        } else {
+            UserDefaults.standard.set(
+                nicOptionsTextField.stringValue,
+                forKey: Constants.nicOptions
+            )
+        }
+    }
+    
     @objc
     private func processDidTerminate(_ notification: Notification) {
         guard let process = notification.object as? Process,
@@ -99,6 +124,8 @@ class ViewController: NSViewController, FileDropViewDelegate {
             return
         }
         
+        updateNICOptions()
+        
         let process = Process()
         process.executableURL = Bundle.main.url(
             forResource: "qemu-system-aarch64",
@@ -116,7 +143,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
             "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
-            "-nic", "user,model=virtio",
+            "-nic", nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
             "-device", "nvme,drive=boot,serial=boot",
@@ -182,6 +209,18 @@ class ViewController: NSViewController, FileDropViewDelegate {
         return adjustedDisplayText
     }
     
+    private var nicOptions: String {
+        var options = "user,model=virtio"
+        
+        if !nicOptionsTextField.stringValue.isEmpty {
+            options += ",\(nicOptionsTextField.stringValue)"
+        }
+        
+        return options
+    }
+    
+    // MARK: - File Drop
+    
     func fileDropView(_ view: FileDropView, didUpdate contentURL: URL) {
         switch view {
         case mainImage:
@@ -198,6 +237,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
     
     private enum Constants {
         static let mainImageFilePath: String = "mainImageFilePath"
+        static let nicOptions: String = "nicOptions"
     }
 }
 
