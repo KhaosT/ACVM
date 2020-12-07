@@ -124,6 +124,31 @@ class ViewController: NSViewController, FileDropViewDelegate {
             return
         }
         
+        let url = URL(fileURLWithPath: mainImage.path + ".nvram")
+        
+        if !FileManager.default.fileExists(atPath: url.path) {
+            let qemuimg = Process()
+            qemuimg.executableURL = Bundle.main.url(
+                forResource: "qemu-img",
+                withExtension: nil
+            )
+            
+            let qi_arguments: [String] = [
+                "create", "-f",
+                "raw", url.path,
+                "67108864"
+            ]
+            
+            qemuimg.arguments = qi_arguments
+            qemuimg.qualityOfService = .userInteractive
+
+            do {
+                try qemuimg.run()
+            } catch {
+                NSLog("Failed to run, error: \(error)")
+            }
+        }
+        
         updateNICOptions()
         
         let process = Process()
@@ -146,6 +171,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
             "-nic", nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
+            "-drive", "file=\(mainImage.path).nvram,format=raw,if=pflash,index=1",
             "-device", "nvme,drive=boot,serial=boot",
             "-device", "intel-hda",
             "-device", "hda-duplex"
