@@ -10,21 +10,9 @@ import Cocoa
 
 class MainWC: NSWindowController {
 
-    private var qemuProcess: Process?
     private var mainImageURL: URL?
     private var cdImageURL: URL?
-    private var vmConfig: VmConfiguration?
-    
-    struct VmConfiguration: Codable {
-        var vmname:String
-        var cores:Int
-        var ram:Int
-        var mainImage:String
-        var cdImage:String
-        var unhideMousePointer:Bool
-        var graphicOptions:String
-        var nicOptions:String
-    }
+    private var virtMachine: VirtualMachine = VirtualMachine()
     
     @IBOutlet weak var startButton: NSToolbarItem!
     @IBOutlet weak var stopButton: NSToolbarItem!
@@ -34,12 +22,10 @@ class MainWC: NSWindowController {
     
     private var configButtonAction: Selector!
     
-    @IBAction func didTapDeleteVMButton(_ sender: NSToolbarItem) {
-        print("Delete VM")
-        
+    @IBAction func didTapDeleteVMButton(_ sender: NSToolbarItem) {        
         let alert = NSAlert()
         alert.messageText = "Delete VM Configuration"
-        alert.informativeText = "Are you sure you want to delete the VM Configuration " + vmConfig!.vmname + "? Note that this will not remove any disk images. Those must be manually removed."
+        alert.informativeText = "Are you sure you want to delete the VM Configuration " + virtMachine.config.vmname + "? Note that this will not remove any disk images. Those must be manually removed."
         
         alert.addButton(withTitle: "Delete")
         alert.addButton(withTitle: "Cancel")
@@ -47,7 +33,15 @@ class MainWC: NSWindowController {
         alert.beginSheetModal(for: self.window!) { (response) in
             if response == .alertFirstButtonReturn {
                 do {
-                    try FileManager.default.removeItem(atPath: "/Users/kupan787/Virtual Machines/" + self.vmConfig!.vmname + ".plist")
+                    let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+                    let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
+                    
+                    try FileManager.default.removeItem(atPath: directoryURL.path + "/" + self.virtMachine.config.vmname + ".plist")
+                    try FileManager.default.removeItem(atPath: self.virtMachine.config.nvram)
+                    
+                    self.virtMachine.process = nil
+                    self.virtMachine.state = 0
+                    self.updateStates()
                     
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "refreshVMList"), object: nil)
                     self.updateCurrentVMConfig()
@@ -65,20 +59,18 @@ class MainWC: NSWindowController {
         
         if toolbarItem.label != "New" {
             if  let viewController = segue.destinationController as? VMConfigVC {
-                viewController.vmConfig = VMConfigVC.VmConfiguration(vmname: vmConfig!.vmname, cores: vmConfig!.cores, ram: vmConfig!.ram, mainImage: vmConfig!.mainImage, cdImage: vmConfig!.cdImage, unhideMousePointer: vmConfig!.unhideMousePointer, graphicOptions: vmConfig!.graphicOptions, nicOptions: vmConfig!.nicOptions)
+                viewController.virtMachine = virtMachine
             }
         }
     }
     
     @IBAction func didTapPauseButton(_ sender: NSToolbarItem) {
-        print("Pause VM")
+        
     }
     
     @IBAction func didTapStopButton(_ sender: NSToolbarItem) {
-        print("Stop VM")
-        
-        qemuProcess?.terminate()
-        qemuProcess = nil
+        virtMachine.process?.terminate()
+        virtMachine.process = nil
         updateStates()
     }
     
@@ -104,29 +96,35 @@ class MainWC: NSWindowController {
     
     private func updateStates() {
         
-        if qemuProcess != nil {
+        if virtMachine.state == 0 {
+            stopButton.action = nil
+            startButton.action = #selector(didTapStartButton(_:))
+            pauseButton.action = nil
+            deleteButton.action = #selector(didTapDeleteVMButton(_:))
+        } else if virtMachine.state == 1 {
             stopButton.action = #selector(didTapStopButton(_:))
             startButton.action = nil
-            pauseButton.action = #selector(didTapPauseButton(_:))
+            pauseButton.action = nil //#selector(didTapPauseButton(_:))
             deleteButton.action = nil
-        } else {
-            stopButton.action = nil
+        } else if virtMachine.state == 2 {
+            stopButton.action = #selector(didTapStopButton(_:))
             startButton.action = #selector(didTapStartButton(_:))
             pauseButton.action = nil
             deleteButton.action = #selector(didTapDeleteVMButton(_:))
         }
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "qemuStatusChange"), object: qemuProcess)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "qemuStatusChange"), object: virtMachine.state)
     }
     
     @objc
     private func processDidTerminate(_ notification: Notification) {
         guard let process = notification.object as? Process,
-              process == qemuProcess else {
+              process == virtMachine.process else {
             return
         }
         
-        qemuProcess = nil
+        virtMachine.process = nil
+        virtMachine.state = 0
         updateStates()
     }
     
@@ -136,10 +134,9 @@ class MainWC: NSWindowController {
         deleteButton.action = nil
         stopButton.action = nil
         
-        if let config = notification.userInfo?["config"] as? MainVC.VmConfiguration {
-            vmConfig = VmConfiguration(vmname: config.vmname, cores: config.cores, ram: config.ram, mainImage: config.mainImage, cdImage: config.cdImage, unhideMousePointer: config.unhideMousePointer, graphicOptions: config.graphicOptions, nicOptions: config.nicOptions)
-            
-            configButton.action = configButtonAction //#selector(didTapConfigureVMButton(_:))
+        if let config = notification.userInfo?["config"] as? VirtualMachine {
+            virtMachine = config
+            configButton.action = configButtonAction
             updateStates()
         }
     }
@@ -153,22 +150,22 @@ class MainWC: NSWindowController {
     
     @IBAction func didTapStartButton(_ sender: Any) {
         
-        guard qemuProcess == nil else {
-            qemuProcess?.terminate()
-            qemuProcess = nil
+        guard virtMachine.process == nil else {
+            virtMachine.process?.terminate()
+            virtMachine.process = nil
             updateStates()
             return
         }
         
         // read in config
-        if let mainImageFilePath = vmConfig?.mainImage,
-           FileManager.default.fileExists(atPath: mainImageFilePath) {
+        let mainImageFilePath = virtMachine.config.mainImage
+        if FileManager.default.fileExists(atPath: mainImageFilePath) {
             let contentURL = URL(fileURLWithPath: mainImageFilePath)
             mainImageURL = contentURL
         }
         
-        if let cdImageFilePath = vmConfig?.cdImage,
-           FileManager.default.fileExists(atPath: cdImageFilePath) {
+        let cdImageFilePath = virtMachine.config.cdImage
+        if FileManager.default.fileExists(atPath: cdImageFilePath) {
             let contentURL = URL(fileURLWithPath: cdImageFilePath)
             cdImageURL = contentURL
         }
@@ -177,55 +174,6 @@ class MainWC: NSWindowController {
               let mainImage = mainImageURL else {
             return
         }
-        
-        let url = URL(fileURLWithPath: mainImage.path + ".nvram")
-        
-        if !FileManager.default.fileExists(atPath: url.path) {
-            let qemuimg = Process()
-            qemuimg.executableURL = Bundle.main.url(
-                forResource: "qemu-img",
-                withExtension: nil
-            )
-            
-            let qi_arguments: [String] = [
-                "create", "-f",
-                "raw", url.path,
-                "67108864"
-            ]
-            
-            qemuimg.arguments = qi_arguments
-            qemuimg.qualityOfService = .userInteractive
-
-            do {
-                try qemuimg.run()
-            } catch {
-                NSLog("Failed to run, error: \(error)")
-            }
-        }
-        
-        /*if 1 == 0 {
-            let qemuimg = Process()
-            qemuimg.executableURL = Bundle.main.url(
-                forResource: "qemu-img",
-                withExtension: nil
-            )
-            
-            let qi_arguments: [String] = [
-                "create",
-                "-f", "qcow2",
-                "-o", "cluster_size=2M",
-                "/Users/kupan787/Virtual Machines/10g.img", "10g"
-            ]
-            
-            qemuimg.arguments = qi_arguments
-            qemuimg.qualityOfService = .userInteractive
-
-            do {
-                try qemuimg.run()
-            } catch {
-                NSLog("Failed to run, error: \(error)")
-            }
-        }*/
         
         let process = Process()
         process.executableURL = Bundle.main.url(
@@ -237,18 +185,18 @@ class MainWC: NSWindowController {
             "-M", "virt,highmem=no",
             "-accel", "hvf",
             "-cpu", "host",
-            "-smp", String(vmConfig!.cores),
-            "-m", String(vmConfig!.ram) + "M",
+            "-smp", String(virtMachine.config.cores),
+            "-m", String(virtMachine.config.ram) + "M",
             "-bios", efiURL.path,
-            "-device", vmConfig!.graphicOptions,
+            "-device", virtMachine.config.graphicOptions,
             "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
-            "-nic", "user,model=virtio" + vmConfig!.nicOptions,
+            "-nic", "user,model=virtio" + virtMachine.config.nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
             //"-drive", "file=\(mainImage.path),if=virtio,id=boot,cache=writethrough", // Needed for Linux
-            "-drive", "file=\(mainImage.path).nvram,format=raw,if=pflash,index=1",
+            "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
             "-device", "nvme,drive=boot,serial=boot",
             "-device", "intel-hda",
             "-device", "hda-duplex"
@@ -261,7 +209,7 @@ class MainWC: NSWindowController {
             ]
         }
         
-        if vmConfig!.unhideMousePointer {
+        if virtMachine.config.unhideMousePointer {
             arguments += [
                 "-display","cocoa,show-cursor=on"
             ]
@@ -277,7 +225,8 @@ class MainWC: NSWindowController {
             object: process
         )
 
-        qemuProcess = process
+        virtMachine.process = process
+        virtMachine.state = 1
         
         updateStates()
 

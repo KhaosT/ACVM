@@ -8,17 +8,6 @@
 import Cocoa
 
 class MainVC: NSViewController {
-        
-    struct VmConfiguration: Codable {
-        var vmname:String
-        var cores:Int
-        var ram:Int
-        var mainImage:String
-        var cdImage:String
-        var unhideMousePointer:Bool
-        var graphicOptions:String
-        var nicOptions:String
-    }
     
     @IBOutlet weak var vmNameTextField: NSTextField!
     @IBOutlet weak var vmStateTextField: NSTextField!
@@ -27,7 +16,7 @@ class MainVC: NSViewController {
     
     @IBOutlet weak var vmConfigTableView: NSTableView!
     
-    var vmConfigList: [VmConfiguration]? = []
+    var vmList: [VirtualMachine]? = []
     
     func setupNotifications()
     {
@@ -38,12 +27,17 @@ class MainVC: NSViewController {
     
     func updateVMStateTextField(_ notification: NSNotification) {
         
-        let qemuProcess = (notification.object)
+        let state = (notification.object) as! Int
         
-        if qemuProcess != nil {
-            vmStateTextField.stringValue = "Started"
-        } else {
+        switch state {
+        case 0:
             vmStateTextField.stringValue = "Stopped"
+        case 1:
+            vmStateTextField.stringValue = "Started"
+        case 2:
+            vmStateTextField.stringValue = "Paused"
+        default:
+            vmStateTextField.stringValue = ""
         }
         
     }
@@ -55,42 +49,60 @@ class MainVC: NSViewController {
         vmConfigTableView.dataSource = self
         vmConfigTableView.target = self
         vmConfigTableView.doubleAction = #selector(tableViewDoubleClick(_:))
+        //vmConfigTableView.doubleAction = vmConfigTableView.action
+        vmConfigTableView.action = nil
         
         setupNotifications()
                     
         reloadFileList()
-        
-        vmStateTextField.stringValue = ""
     }
     
     func findAllVMConfigs() {
         let fm = FileManager.default
-        let path = "/Users/kupan787/Virtual Machines"
-
-        vmConfigList?.removeAll()
+        let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
         
         do {
-            let items = try fm.contentsOfDirectory(atPath: path)
+            let items = try fm.contentsOfDirectory(atPath: directoryURL.path)
 
             for item in items {
                 if item.hasSuffix("plist") {
-                    if let xml = FileManager.default.contents(atPath: path + "/" + item.description) {
+                    if let xml = FileManager.default.contents(atPath: directoryURL.path + "/" + item.description) {
                         let vmConfig = try! PropertyListDecoder().decode(VmConfiguration.self, from: xml)
-                        vmConfigList!.append(vmConfig)
+                        let vm = VirtualMachine()
+                        vm.config = vmConfig
+                        
+                        if vmList!.contains(where: { element in element.config.vmname == vm.config.vmname }) {
+                            // Item exists
+                        } else {
+                            vmList!.append(vm)
+                        }
                     }
                 }
             }
+                        
+            vmList!.removeAll(where: { element in
+                if !FileManager.default.fileExists(atPath: directoryURL.path + "/" + element.config.vmname + ".plist") {
+                    print(directoryURL.path + "/" + element.config.vmname + ".plist" + " - NOT FOUND")
+                    return true
+                }
+                else {
+                    print(directoryURL.path + "/" + element.config.vmname + ".plist" + " - FOUND")
+                    return false
+                }
+            })
+            
         } catch {
             // failed to read directory – bad permissions, perhaps?
         }
         
-        vmConfigList?.sort {
-            $0.vmname < $1.vmname
+        vmList?.sort {
+            $0.config.vmname.uppercased() < $1.config.vmname.uppercased()
         }
     }
     
-    func populateVMAttributes(_ fileContents: Data?) {
-        let vmConfig = try! PropertyListDecoder().decode(VmConfiguration.self, from: fileContents!)
+    func populateVMAttributes(_ vm: VirtualMachine) {
+        let vmConfig = vm.config
         
         vmNameTextField.stringValue = vmConfig.vmname
         
@@ -102,7 +114,17 @@ class MainVC: NSViewController {
             vmRAMTextField.stringValue = String(vmConfig.ram) + " MB"
         }
         
-        vmStateTextField.stringValue = "Stopped"
+        switch vm.state {
+        case 0:
+            vmStateTextField.stringValue = "Stopped"
+        case 1:
+            vmStateTextField.stringValue = "Started"
+        case 2:
+            vmStateTextField.stringValue = "Paused"
+        default:
+            vmStateTextField.stringValue = ""
+        }
+        
     }
     
     func refreshVMList() {
@@ -121,12 +143,28 @@ class MainVC: NSViewController {
 
     @objc func tableViewDoubleClick(_ sender:AnyObject) {
         guard vmConfigTableView.selectedRow >= 0,
-              let item = vmConfigList?[vmConfigTableView.selectedRow] else {
+              let item = vmList?[vmConfigTableView.selectedRow] else {
             return
         }
         
-        print("Double Click Start VM: " + item.vmname)
+        if let myViewController = self.storyboard?.instantiateController(withIdentifier: "vmconfig") as? VMConfigVC {
+            myViewController.virtMachine = item
+            //self.view.window?.contentViewController = myViewController
+            
+            self.view.window?.beginSheet(myViewController.view.window!, completionHandler: { (response) in
+                
+            })
+        }
         
+        //self.view.window!
+        
+    }
+    
+    override func prepare (for segue: NSStoryboardSegue, sender: Any?)
+    {
+        if  let viewController = segue.destinationController as? VMConfigVC {
+            viewController.virtMachine = (vmList?[vmConfigTableView.selectedRow])!
+        }
     }
     
 }
@@ -134,7 +172,7 @@ class MainVC: NSViewController {
 extension MainVC: NSTableViewDataSource {
 
   func numberOfRows(in tableView: NSTableView) -> Int {
-    return vmConfigList?.count ?? 0
+    return vmList?.count ?? 0
   }
 
   func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
@@ -159,13 +197,13 @@ extension MainVC: NSTableViewDelegate {
         var text: String = ""
         var cellIdentifier: String = ""
         
-        guard let item = vmConfigList?[row] else {
+        guard let item = vmList?[row] else {
             return nil
         }
         
         if tableColumn == tableView.tableColumns[0] {
             //image = item.cdImage
-            text = item.vmname
+            text = item.config.vmname
             cellIdentifier = CellIdentifiers.NameCell
         }
         
@@ -182,10 +220,10 @@ extension MainVC: NSTableViewDelegate {
         if (notification.object as? NSTableView) != nil {
             
             if vmConfigTableView.selectedRow >= 0,
-               let item = vmConfigList?[vmConfigTableView.selectedRow] {
-                populateVMAttributes(FileManager.default.contents(atPath: "/Users/kupan787/Virtual Machines/" + item.vmname + ".plist"))
+               let item = vmList?[vmConfigTableView.selectedRow] {
+                populateVMAttributes(item)
                 
-                let itemInfo:[String: VmConfiguration] = ["config": item]
+                let itemInfo:[String: VirtualMachine] = ["config": item]
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "vmConfigChange"), object: nil, userInfo: itemInfo)
             }
             else

@@ -20,32 +20,27 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
     
     @IBOutlet weak var graphicPopupButton: NSPopUpButton!
     
-    private var mainImageURL: URL?
-    private var cdImageURL: URL?
+    @IBOutlet weak var vmNameAlertTextField: NSTextField!
     
     @IBOutlet weak var actionButton: NSButton!
     @IBOutlet weak var cancelButton: NSButton!
     @IBOutlet weak var resetNVRAMButton: NSButton!
     
-    struct VmConfiguration: Codable {
-        var vmname:String
-        var cores:Int
-        var ram:Int
-        var mainImage:String
-        var cdImage:String
-        var unhideMousePointer:Bool
-        var graphicOptions:String
-        var nicOptions:String
-    }
-    
-    var vmConfig: VmConfiguration = VmConfiguration(vmname: "", cores: 4, ram: 4096, mainImage: "", cdImage: "", unhideMousePointer: false, graphicOptions: "", nicOptions: "")
+    var virtMachine:VirtualMachine = VirtualMachine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if vmConfig.vmname != "" {
+        vmNameTextField.isEditable = true
+        
+        if virtMachine.config.vmname != "" {
             loadConfigValues()
-            resetNVRAMButton.isEnabled = true
+            
+            if FileManager.default.fileExists(atPath: virtMachine.config.nvram) {
+                resetNVRAMButton.isEnabled = true
+            }
+            
+            vmNameTextField.isEditable = false
         }
         
         mainImage.delegate = self
@@ -53,26 +48,24 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
     }
     
     func loadConfigValues() {
-        vmNameTextField.stringValue = vmConfig.vmname
+        vmNameTextField.stringValue = virtMachine.config.vmname
                 
-        cpuTextField.stringValue = String(vmConfig.cores)
-        ramTextField.stringValue = String(vmConfig.ram)
+        cpuTextField.stringValue = String(virtMachine.config.cores)
+        ramTextField.stringValue = String(virtMachine.config.ram)
                 
-        let mainImageFilePath = vmConfig.mainImage
+        let mainImageFilePath = virtMachine.config.mainImage
         if FileManager.default.fileExists(atPath: mainImageFilePath) {
             let contentURL = URL(fileURLWithPath: mainImageFilePath)
-            mainImageURL = contentURL
             mainImage.contentURL = contentURL
         }
            
-        let cdImageFilePath = vmConfig.cdImage
+        let cdImageFilePath = virtMachine.config.cdImage
         if FileManager.default.fileExists(atPath: cdImageFilePath) {
             let contentURL = URL(fileURLWithPath: cdImageFilePath)
-            cdImageURL = contentURL
             cdImage.contentURL = contentURL
         }
         
-        if vmConfig.unhideMousePointer {
+        if virtMachine.config.unhideMousePointer {
             unhideMousePointer.state = .on
         }
         else
@@ -80,8 +73,8 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
             unhideMousePointer.state = .off
         }
         
-        graphicPopupButton.selectItem(withTitle: vmConfig.graphicOptions)
-        nicOptionsTextField.stringValue = vmConfig.nicOptions
+        graphicPopupButton.selectItem(withTitle: virtMachine.config.graphicOptions)
+        nicOptionsTextField.stringValue = virtMachine.config.nicOptions
     }
     
     @IBAction func onGraphicChange(_ sender: Any) {
@@ -95,42 +88,90 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
     @IBAction func didTapSaveButton(_ sender: NSButton) {
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .xml
-
+        
         if vmConfigName != ""
-        {
-            let path = URL(fileURLWithPath: "/Users/kupan787/Virtual Machines/" + vmConfigName + ".plist")
-
-            vmConfig.vmname = vmConfigName
-            vmConfig.cores = Int(numberOfCores) ?? 4
-            vmConfig.ram = (Int(ramSize) ?? 4)
-            vmConfig.mainImage = mainImageURL?.path ?? ""
-            vmConfig.cdImage = cdImageURL?.path ?? ""
-            
-            if unhideMousePointer.state == .off {
-                vmConfig.unhideMousePointer = false
-            }
-            else
-            {
-                vmConfig.unhideMousePointer = true
-            }
-            
-            vmConfig.graphicOptions = displayAdaptor
-            vmConfig.nicOptions = nicOptions
-            
+        {            
+            let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
+              
             do {
-                let data = try encoder.encode(vmConfig)
-                try data.write(to: path)
-            } catch {
+                try FileManager.default.createDirectory (at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+                let documentURL = directoryURL.appendingPathComponent (vmConfigName + ".plist")
+                
+                if virtMachine.config.vmname == "" &&
+                    FileManager.default.fileExists(atPath: documentURL.path) {
+                    vmNameAlertTextField.stringValue = "That name is already in use, please try another."
+                    vmNameAlertTextField.isHidden = false
+                    return
+                }
+                
+                virtMachine.config.vmname = vmConfigName
+                virtMachine.config.cores = Int(numberOfCores) ?? 4
+                virtMachine.config.ram = (Int(ramSize) ?? 4096)
+                virtMachine.config.mainImage = mainImage.contentURL?.path ?? ""
+                virtMachine.config.cdImage = cdImage.contentURL?.path ?? ""
+                
+                if unhideMousePointer.state == .off {
+                    virtMachine.config.unhideMousePointer = false
+                }
+                else
+                {
+                    virtMachine.config.unhideMousePointer = true
+                }
+                
+                virtMachine.config.graphicOptions = displayAdaptor
+                virtMachine.config.nicOptions = nicOptions
+                
+                if !FileManager.default.fileExists(atPath: virtMachine.config.nvram) {
+                    let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+                    let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
+                    let documentURL = directoryURL.appendingPathComponent (virtMachine.config.vmname + ".nvram")
+                    
+                    virtMachine.config.nvram = documentURL.path
+                    
+                    let qemuimg = Process()
+                    qemuimg.executableURL = Bundle.main.url(
+                        forResource: "qemu-img",
+                        withExtension: nil
+                    )
+                    
+                    let qi_arguments: [String] = [
+                        "create", "-f",
+                        "raw", virtMachine.config.nvram,
+                        "67108864"
+                    ]
+                    
+                    qemuimg.arguments = qi_arguments
+                    qemuimg.qualityOfService = .userInteractive
+
+                    do {
+                        try qemuimg.run()
+                    } catch {
+                        NSLog("Failed to run, error: \(error)")
+                    }
+                }
+                
+                let data = try encoder.encode(virtMachine.config)
+                try data.write(to: documentURL)
+                
+                vmNameAlertTextField.isHidden = true
+                
+                //self.view.window?.close()
+                //let application = NSApplication.shared
+                //application.stopModal()
+                self.dismiss(self)
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "refreshVMList"), object: nil)
+            }
+            catch {
                 print(error)
             }
         }
-        
-        //self.view.window?.close()
-        //let application = NSApplication.shared
-        //application.stopModal()
-        self.dismiss(self)
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "refreshVMList"), object: nil)
+        else
+        {
+            vmNameAlertTextField.stringValue = "Please enter a VMName to save the configuration."
+            vmNameAlertTextField.isHidden = false
+        }
     }
     
     
@@ -144,7 +185,7 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
     
     @IBAction func didTapResetNVRAMButton(_ sender: NSButton) {
         do {
-            try FileManager.default.removeItem(atPath: vmConfig.mainImage + ".nvram")
+            try FileManager.default.removeItem(atPath: virtMachine.config.nvram)
             resetNVRAMButton.isEnabled = false
         }
         catch {
@@ -203,9 +244,9 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
     func fileDropView(_ view: FileDropView, didUpdate contentURL: URL) {
         switch view {
         case mainImage:
-            mainImageURL = contentURL
+            mainImage.contentURL = contentURL
         case cdImage:
-            cdImageURL = contentURL
+            mainImage.contentURL = contentURL
         default:
             break
         }

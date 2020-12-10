@@ -11,7 +11,6 @@
 		CC032B642574D9A6002CE035 /* VMConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B632574D9A6002CE035 /* VMConfigVC.swift */; };
 		CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC032B652574D9A7002CE035 /* Assets.xcassets */; };
 		CC032B692574D9A7002CE035 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC032B672574D9A7002CE035 /* Main.storyboard */; };
-		CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */ = {isa = PBXBuildFile; fileRef = CC032B722574DAB0002CE035 /* qemu-system-aarch64 */; };
 		CC032B7D2574DDD6002CE035 /* pc-bios in Resources */ = {isa = PBXBuildFile; fileRef = CC032B7C2574DDD6002CE035 /* pc-bios */; };
 		CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */ = {isa = PBXBuildFile; fileRef = CC032B802574DE69002CE035 /* QEMU_EFI.fd */; };
 		CC032B842574E137002CE035 /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B832574E137002CE035 /* FileDropView.swift */; };
@@ -24,7 +23,10 @@
 		CC032BA12574EAE4002CE035 /* libpcre.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8B2574EAD5002CE035 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CC032BA22574EAE5002CE035 /* libpixman-1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CC032BA32574EAE6002CE035 /* libusb-1.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CC7C0FF4257B487C000512DD /* qemu-img in Resources */ = {isa = PBXBuildFile; fileRef = CC7C0FF3257B487C000512DD /* qemu-img */; };
+		FB159BFC2581DF3E00BA28F2 /* qemu-system-aarch64 in Resources */ = {isa = PBXBuildFile; fileRef = FB159BFA2581DF3E00BA28F2 /* qemu-system-aarch64 */; };
+		FB2BB2522581E1110000C2D1 /* qemu-img in Resources */ = {isa = PBXBuildFile; fileRef = FB678E342581DFC100573606 /* qemu-img */; };
+		FB34EA692581D8CB0029341F /* DiskCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34EA682581D8CB0029341F /* DiskCreationVC.swift */; };
+		FB57FBEB258198710036073E /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57FBEA258198710036073E /* VirtualMachine.swift */; };
 		FB8815F6257F2F63003147DB /* MainWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8815F5257F2F63003147DB /* MainWC.swift */; };
 		FBA80F2A25804268005580AE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA80F2925804268005580AE /* MainVC.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +61,6 @@
 		CC032B682574D9A7002CE035 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC032B6A2574D9A7002CE035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC032B6B2574D9A7002CE035 /* ACVM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ACVM.entitlements; sourceTree = "<group>"; };
-		CC032B722574DAB0002CE035 /* qemu-system-aarch64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-system-aarch64"; sourceTree = "<group>"; };
 		CC032B7C2574DDD6002CE035 /* pc-bios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "pc-bios"; sourceTree = "<group>"; };
 		CC032B802574DE69002CE035 /* QEMU_EFI.fd */ = {isa = PBXFileReference; lastKnownFileType = file; path = QEMU_EFI.fd; sourceTree = "<group>"; };
 		CC032B832574E137002CE035 /* FileDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropView.swift; sourceTree = "<group>"; };
@@ -72,7 +73,10 @@
 		CC032B8D2574EAD5002CE035 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
 		CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
 		CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpixman-1.0.dylib"; sourceTree = "<group>"; };
-		CC7C0FF3257B487C000512DD /* qemu-img */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-img"; sourceTree = "<group>"; };
+		FB159BFA2581DF3E00BA28F2 /* qemu-system-aarch64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-system-aarch64"; sourceTree = "<group>"; };
+		FB34EA682581D8CB0029341F /* DiskCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCreationVC.swift; sourceTree = "<group>"; };
+		FB57FBEA258198710036073E /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
+		FB678E342581DFC100573606 /* qemu-img */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-img"; sourceTree = "<group>"; };
 		FB8815F5257F2F63003147DB /* MainWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWC.swift; sourceTree = "<group>"; };
 		FBA80F2925804268005580AE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +115,7 @@
 				CC032B612574D9A6002CE035 /* AppDelegate.swift */,
 				CC032B632574D9A6002CE035 /* VMConfigVC.swift */,
 				FBA80F2925804268005580AE /* MainVC.swift */,
+				FB8815F5257F2F63003147DB /* MainWC.swift */,
 				CC032B832574E137002CE035 /* FileDropView.swift */,
 				CC032B652574D9A7002CE035 /* Assets.xcassets */,
 				CC032B672574D9A7002CE035 /* Main.storyboard */,
@@ -118,9 +123,10 @@
 				CC032B6B2574D9A7002CE035 /* ACVM.entitlements */,
 				CC032B7F2574DE50002CE035 /* EFI */,
 				CC032B7C2574DDD6002CE035 /* pc-bios */,
-				CC7C0FF3257B487C000512DD /* qemu-img */,
-				CC032B722574DAB0002CE035 /* qemu-system-aarch64 */,
-				FB8815F5257F2F63003147DB /* MainWC.swift */,
+				FB159BFA2581DF3E00BA28F2 /* qemu-system-aarch64 */,
+				FB678E342581DFC100573606 /* qemu-img */,
+				FB57FBEA258198710036073E /* VirtualMachine.swift */,
+				FB34EA682581D8CB0029341F /* DiskCreationVC.swift */,
 			);
 			path = ACVM;
 			sourceTree = "<group>";
@@ -211,8 +217,8 @@
 				CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */,
 				CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */,
 				CC032B692574D9A7002CE035 /* Main.storyboard in Resources */,
-				CC7C0FF4257B487C000512DD /* qemu-img in Resources */,
-				CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */,
+				FB2BB2522581E1110000C2D1 /* qemu-img in Resources */,
+				FB159BFC2581DF3E00BA28F2 /* qemu-system-aarch64 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC032B642574D9A6002CE035 /* VMConfigVC.swift in Sources */,
+				FB57FBEB258198710036073E /* VirtualMachine.swift in Sources */,
 				FBA80F2A25804268005580AE /* MainVC.swift in Sources */,
+				FB34EA692581D8CB0029341F /* DiskCreationVC.swift in Sources */,
 				FB8815F6257F2F63003147DB /* MainWC.swift in Sources */,
 				CC032B622574D9A6002CE035 /* AppDelegate.swift in Sources */,
 				CC032B842574E137002CE035 /* FileDropView.swift in Sources */,
