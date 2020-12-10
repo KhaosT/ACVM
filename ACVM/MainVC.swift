@@ -147,14 +147,14 @@ class MainVC: NSViewController {
             return
         }
         
-        if let myViewController = self.storyboard?.instantiateController(withIdentifier: "vmconfig") as? VMConfigVC {
+        /*if let myViewController = self.storyboard?.instantiateController(withIdentifier: "vmconfig") as? VMConfigVC {
             myViewController.virtMachine = item
             //self.view.window?.contentViewController = myViewController
             
             self.view.window?.beginSheet(myViewController.view.window!, completionHandler: { (response) in
                 
             })
-        }
+        }*/
         
         //self.view.window!
         
