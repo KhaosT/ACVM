@@ -17,6 +17,38 @@ struct VmConfiguration: Codable {
     var graphicOptions:String = ""
     var nicOptions:String = ""
     var nvram:String = ""
+    var mainImageUseVirtIO:Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case vmname = "vmname"
+        case cores = "cores"
+        case ram = "ram"
+        case mainImage = "mainImage"
+        case cdImage = "cdImage"
+        case unhideMousePointer = "unhideMousePointer"
+        case graphicOptions = "graphicOptions"
+        case nicOptions = "nicOptions"
+        case nvram = "nvram"
+        case mainImageUseVirtIO = "mainImageUseVirtIO"
+    }
+    
+    init() {
+        
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        vmname = try values.decodeIfPresent(String.self, forKey: .vmname) ?? ""
+        cores = try values.decodeIfPresent(Int.self, forKey: .cores) ?? 4
+        ram = try values.decodeIfPresent(Int.self, forKey: .ram) ?? 4096
+        mainImage = try values.decodeIfPresent(String.self, forKey: .mainImage) ?? ""
+        cdImage = try values.decodeIfPresent(String.self, forKey: .cdImage) ?? ""
+        unhideMousePointer = try values.decodeIfPresent(Bool.self, forKey: .unhideMousePointer) ?? false
+        graphicOptions = try values.decodeIfPresent(String.self, forKey: .graphicOptions) ?? ""
+        nicOptions = try values.decodeIfPresent(String.self, forKey: .nicOptions) ?? ""
+        nvram = try values.decodeIfPresent(String.self, forKey: .nvram) ?? ""
+        mainImageUseVirtIO = try values.decodeIfPresent(Bool.self, forKey: .mainImageUseVirtIO) ?? false
+    }
 }
 
 class VirtualMachine {

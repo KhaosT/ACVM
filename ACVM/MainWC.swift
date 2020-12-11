@@ -70,7 +70,30 @@ class MainWC: NSWindowController {
     
     @IBAction func didTapStopButton(_ sender: NSToolbarItem) {
         virtMachine.process?.terminate()
+        cleanUpProcessOnStop()
+    }
+    
+    func cleanUpProcessOnStop() {
         virtMachine.process = nil
+        virtMachine.state = 0
+        
+        virtMachine.config.cdImage = ""
+        let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
+          
+        do {
+            try FileManager.default.createDirectory (at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+            let documentURL = directoryURL.appendingPathComponent (virtMachine.config.vmname + ".plist")
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            
+            let data = try encoder.encode(virtMachine.config)
+            try data.write(to: documentURL)
+        }
+        catch {
+            
+        }
+        
         updateStates()
     }
     
@@ -123,9 +146,7 @@ class MainWC: NSWindowController {
             return
         }
         
-        virtMachine.process = nil
-        virtMachine.state = 0
-        updateStates()
+        cleanUpProcessOnStop()
     }
     
     func updateCurrentVMConfig(_ notification: NSNotification) {
@@ -152,8 +173,7 @@ class MainWC: NSWindowController {
         
         guard virtMachine.process == nil else {
             virtMachine.process?.terminate()
-            virtMachine.process = nil
-            updateStates()
+            cleanUpProcessOnStop()
             return
         }
         
@@ -194,13 +214,22 @@ class MainWC: NSWindowController {
             "-device", "usb-tablet",
             "-nic", "user,model=virtio" + virtMachine.config.nicOptions,
             "-rtc", "base=localtime,clock=host",
-            "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
-            //"-drive", "file=\(mainImage.path),if=virtio,id=boot,cache=writethrough", // Needed for Linux
             "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
-            "-device", "nvme,drive=boot,serial=boot",
             "-device", "intel-hda",
             "-device", "hda-duplex"
         ]
+        
+        if virtMachine.config.mainImageUseVirtIO {
+            arguments += [
+                "-drive", "file=\(mainImage.path),if=virtio,id=boot,cache=writethrough",
+            ]
+        }
+        else {
+            arguments += [
+                "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
+                "-device", "nvme,drive=boot,serial=boot"
+            ]
+        }
         
         if let cdImageURL = cdImageURL {
             arguments += [
