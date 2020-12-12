@@ -398,7 +398,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-414" y="174"/>
+            <point key="canvasLocation" x="-734" y="-49"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="XS6-GQ-2zy">
@@ -418,7 +418,7 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="F9022E3D-0F78-4C28-B37E-455786D18783" label="New" paletteLabel="New" tag="-1" image="NSAddTemplate" sizingBehavior="auto" id="wSA-aY-Vfe">
                                     <connections>
-                                        <segue destination="XfG-lQ-9wD" kind="sheet" id="dnl-Np-B7S"/>
+                                        <segue destination="XfG-lQ-9wD" kind="sheet" id="4GJ-XX-DCp"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="430B4439-C059-4978-9339-B805E9ED2E54" label="Delete" paletteLabel="Delete" tag="-1" image="NSStopProgressFreestandingTemplate" sizingBehavior="auto" id="Hcn-hJ-YdO">
@@ -428,7 +428,7 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="5E0D43E0-C98D-48E8-8284-17C10A704996" label="Configure" paletteLabel="Configure" tag="-1" image="NSAdvanced" sizingBehavior="auto" id="0Ap-VF-yZz">
                                     <connections>
-                                        <segue destination="XfG-lQ-9wD" kind="sheet" id="6bW-UM-lfJ"/>
+                                        <segue destination="XfG-lQ-9wD" kind="sheet" id="HEI-Jc-jYB"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="1E744994-3CCA-4252-A1FA-17992A2EA52E" label="Start" paletteLabel="Start" tag="-1" image="NSTouchBarPlayTemplate" sizingBehavior="auto" id="HoZ-oK-oem">
@@ -474,7 +474,7 @@
                 </windowController>
                 <customObject id="USP-og-66N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-398" y="587"/>
+            <point key="canvasLocation" x="-708" y="412"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="lPL-aU-hah">
@@ -660,7 +660,305 @@
                 </viewController>
                 <customObject id="rwK-kh-Zb9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-506" y="1047"/>
+            <point key="canvasLocation" x="-690" y="835"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="4g6-h9-0uL">
+            <objects>
+                <windowController id="m6n-cj-3Jq" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ImT-1w-y30">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="239" width="480" height="88"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+                        <view key="contentView" id="lsc-xm-a6v">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="88"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="m6n-cj-3Jq" id="QJY-LN-Hvx"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="7bT-Xo-whG" kind="relationship" relationship="window.shadowedContentViewController" id="k4E-3T-zf4"/>
+                    </connections>
+                </windowController>
+                <customObject id="AjW-2h-6o4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673" y="1293"/>
+        </scene>
+        <!--ConfigTVC-->
+        <scene sceneID="mwO-2y-Kdc">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="7bT-Xo-whG" customClass="ConfigTVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="Eoe-9w-rsY"/>
+                        <tabViewItem identifier="" id="qPB-3L-nmE"/>
+                        <tabViewItem id="0wg-Tf-2Ic"/>
+                        <tabViewItem id="uBS-Fb-79x"/>
+                        <tabViewItem id="biq-JB-hNL"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="n18-g1-ig3">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="88"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="7bT-Xo-whG" id="myr-wP-XIF"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="n18-g1-ig3" id="Ihb-ns-9OR"/>
+                        <segue destination="1ko-DW-Moh" kind="relationship" relationship="tabItems" id="XCL-Jr-cIW"/>
+                        <segue destination="DTh-dc-iJY" kind="relationship" relationship="tabItems" id="NoU-tL-43a"/>
+                        <segue destination="FSY-x7-vpi" kind="relationship" relationship="tabItems" id="uOh-VR-qPe"/>
+                        <segue destination="R9l-Yx-WOc" kind="relationship" relationship="tabItems" id="Ql5-iV-RwM"/>
+                        <segue destination="3Ia-tA-jxu" kind="relationship" relationship="tabItems" id="9ju-nr-fcE"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="aJt-Df-PfM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-816" y="1732"/>
+        </scene>
+        <!--General-->
+        <scene sceneID="0vb-TT-Qad">
+            <objects>
+                <viewController title="General" id="1ko-DW-Moh" customClass="VMConfigTVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="shC-GN-wry">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="162"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SMS-Pf-8gJ">
+                                <rect key="frame" x="40" y="94" width="376" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fek-de-DF1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdI-46-RqN">
+                                <rect key="frame" x="18" y="123" width="75" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="VM Name" placeholderString="4" id="h14-iI-P74">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Si-ix-bwN">
+                                <rect key="frame" x="18" y="48" width="290" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="That name is already in use, please try another." placeholderString="4" id="bcB-eC-S3a">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3N6-jJ-pUo">
+                                <rect key="frame" x="13" y="13" width="119" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Reset NVRAM" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KBj-YK-YZO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="didTapResetNVRAMButton:" target="1ko-DW-Moh" id="TN0-aK-Qgo"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMA-3Q-ZmL">
+                                <rect key="frame" x="361" y="13" width="76" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ifY-iX-sRM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="didTapCancelButton:" target="1ko-DW-Moh" id="UWj-aX-2IX"/>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Hgl-UG-2aj">
+                                <rect key="frame" x="0.0" y="70" width="450" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1N-YH-GrQ">
+                                <rect key="frame" x="299" y="13" width="64" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bqi-9M-fe7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="didTapSaveButton:" target="1ko-DW-Moh" id="xYU-36-Fe6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="G1N-YH-GrQ" id="NAg-M1-HZd"/>
+                        <outlet property="alertTextField" destination="8Si-ix-bwN" id="u4j-RB-91J"/>
+                        <outlet property="cancelButton" destination="qMA-3Q-ZmL" id="6IY-Lw-5zc"/>
+                        <outlet property="resetNVRAMButton" destination="3N6-jJ-pUo" id="lat-n4-uZb"/>
+                        <outlet property="vmNameTextField" destination="SMS-Pf-8gJ" id="W7x-7U-m08"/>
+                    </connections>
+                </viewController>
+                <customObject id="W7e-kS-KHn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="240" y="1635"/>
+        </scene>
+        <!--Hardware-->
+        <scene sceneID="wzh-10-zpV">
+            <objects>
+                <viewController title="Hardware" id="DTh-dc-iJY" customClass="VMConfigTVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fAx-dQ-syc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="251"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbY-Rq-i8G">
+                                <rect key="frame" x="20" y="186" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="4" drawsBackground="YES" id="OEk-ab-gBF">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mff-cf-ws3">
+                                <rect key="frame" x="18" y="215" width="68" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="# of Cores" placeholderString="4" id="5eD-yE-Zt4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-A4-8GH">
+                                <rect key="frame" x="18" y="162" width="59" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="RAM" placeholderString="4" id="sEe-WD-Vr4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7s-PO-bH7">
+                                <rect key="frame" x="20" y="133" width="55" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="4096" drawsBackground="YES" id="IHV-ha-sgZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-mu-UwW">
+                                <rect key="frame" x="18" y="109" width="49" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Display" id="QEV-g8-DEH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbg-nH-f1M">
+                                <rect key="frame" x="17" y="77" width="100" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="ramfb" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qGm-Ph-V7f" id="2ho-Ac-yil">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="UZn-1N-SC0">
+                                        <items>
+                                            <menuItem title="ramfb" state="on" id="qGm-Ph-V7f">
+                                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="virtio-gpu" id="VaJ-G8-x73"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru7-nj-u2l">
+                                <rect key="frame" x="136" y="82" width="158" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="unhide mouse pointer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JEL-WA-QCu">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdF-II-af2">
+                                <rect key="frame" x="18" y="48" width="290" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="That name is already in use, please try another." placeholderString="4" id="s2j-EC-ZeK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-Ra-LM8">
+                                <rect key="frame" x="13" y="13" width="119" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Reset NVRAM" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="40S-lY-70f">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="didTapResetNVRAMButton:" target="DTh-dc-iJY" id="tsQ-H6-C45"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAN-eY-MY1">
+                                <rect key="frame" x="361" y="13" width="76" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Trr-JV-YA9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="didTapCancelButton:" target="DTh-dc-iJY" id="Sh5-07-6t1"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8AP-T0-WiR">
+                                <rect key="frame" x="299" y="13" width="64" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EGK-fc-MDB">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="didTapSaveButton:" target="DTh-dc-iJY" id="1Zv-1j-RfH"/>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ps6-6R-ldV">
+                                <rect key="frame" x="0.0" y="70" width="450" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="8AP-T0-WiR" id="Wt4-VQ-vOA"/>
+                        <outlet property="alertTextField" destination="qdF-II-af2" id="VpX-QM-cBw"/>
+                        <outlet property="cancelButton" destination="CAN-eY-MY1" id="kau-XT-2mT"/>
+                        <outlet property="cpuTextField" destination="dbY-Rq-i8G" id="7kw-ej-T0f"/>
+                        <outlet property="graphicPopupButton" destination="fbg-nH-f1M" id="7Bd-Du-nj4"/>
+                        <outlet property="ramTextField" destination="p7s-PO-bH7" id="QXF-jX-LPA"/>
+                        <outlet property="resetNVRAMButton" destination="b7x-Ra-LM8" id="kN4-9v-51D"/>
+                        <outlet property="unhideMousePointer" destination="ru7-nj-u2l" id="HND-z6-TC1"/>
+                    </connections>
+                </viewController>
+                <customObject id="G8j-UL-Tab" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="240" y="2051.5"/>
         </scene>
         <!--Disk Creation-->
         <scene sceneID="578-kK-WjZ">
@@ -788,7 +1086,7 @@ DQ
                 </viewController>
                 <customObject id="iFG-xq-y9C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466" y="595"/>
+            <point key="canvasLocation" x="-62" y="304"/>
         </scene>
         <!--ConfigVC-->
         <scene sceneID="hIz-AP-VOD">
@@ -994,22 +1292,6 @@ CA
                                             <rect key="frame" x="10" y="33" width="410" height="226"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z92-oR-iJG">
-                                                    <rect key="frame" x="37" y="154" width="356" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="CBh-qI-grv">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        <connections>
-                                                            <binding destination="XfG-lQ-9wD" name="displayPatternValue1" keyPath="self.nicOptionsTextField" id="lWJ-1X-vDL">
-                                                                <dictionary key="options">
-                                                                    <string key="NSDisplayPattern">%{value1}@</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omz-ec-GCa">
                                                     <rect key="frame" x="35" y="180" width="78" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1025,6 +1307,15 @@ CA
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Network" id="FQg-xx-I9I">
                                                         <font key="font" metaFont="system" size="16"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VlB-ep-dlQ">
+                                                    <rect key="frame" x="37" y="151" width="356" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="ofm-N1-GX6">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -1076,10 +1367,9 @@ DQ
                         <outlet property="cpuTextField" destination="Aad-aw-ytP" id="aah-OH-WS2"/>
                         <outlet property="graphicPopupButton" destination="kX9-F4-jaa" id="B7e-fa-Aos"/>
                         <outlet property="mainImage" destination="hhY-Ck-wlJ" id="Bxz-ND-TgP"/>
-                        <outlet property="nicOptionsTextField" destination="z92-oR-iJG" id="R1w-2t-veY"/>
+                        <outlet property="nicOptionsTextField" destination="VlB-ep-dlQ" id="3YE-Q0-2cq"/>
                         <outlet property="ramTextField" destination="LsP-3N-EmH" id="Zip-CS-1pz"/>
                         <outlet property="resetNVRAMButton" destination="7dO-Vc-vt4" id="Dfg-R5-o0H"/>
-                        <outlet property="tabView" destination="IAI-X5-IhU" id="YVF-W5-L8d"/>
                         <outlet property="unhideMousePointer" destination="SW6-Fx-2XD" id="4ew-EO-eew"/>
                         <outlet property="useVirtIOForDisk" destination="CuT-bh-zqL" id="dgp-Tm-Xnd"/>
                         <outlet property="vmNameAlertTextField" destination="3Oq-3u-tCY" id="J9g-AJ-Kxf"/>
@@ -1088,11 +1378,141 @@ DQ
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="1162"/>
+            <point key="canvasLocation" x="-72" y="879"/>
+        </scene>
+        <!--Disks-->
+        <scene sceneID="lNG-H9-gC5">
+            <objects>
+                <viewController title="Disks" id="FSY-x7-vpi" customClass="VMConfigTVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2QU-np-yqd">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="243"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FYZ-AK-Tbc" customClass="FileDropView" customModule="ACVM" customModuleProvider="target">
+                                <rect key="frame" x="151" y="168" width="62" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="EG1-dv-91A"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5W1-dX-Opc">
+                                <rect key="frame" x="145" y="147" width="74" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Main Image" id="iZw-cU-I0b">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5JS-h4-1AF" customClass="FileDropView" customModule="ACVM" customModuleProvider="target">
+                                <rect key="frame" x="240" y="168" width="61" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="fEw-Tt-ckT"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nB6-Qp-mFm">
+                                <rect key="frame" x="240" y="131" width="61" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" selectable="YES" alignment="center" title="CD Image (Optional)" id="hc8-7r-jpF">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHg-ru-0Zg">
+                                <rect key="frame" x="18" y="106" width="176" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="use virtio for Main Image" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YgF-Cy-VGg">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u2I-cd-trJ">
+                                <rect key="frame" x="18" y="60" width="282" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" placeholderString="4" id="h1q-fg-Nba">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <string key="title">Note: When installing some OSs (like Ubuntu) it doesn't like the NVME drive. Checking this will allow the installer to see the disk during setup.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWs-lz-92i">
+                                <rect key="frame" x="13" y="13" width="86" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Create..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I1R-Ma-c1h">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="cdImage" destination="5JS-h4-1AF" id="FST-4w-Dnh"/>
+                        <outlet property="mainImage" destination="FYZ-AK-Tbc" id="8Jr-gJ-tCe"/>
+                        <outlet property="useVirtIOForDisk" destination="nHg-ru-0Zg" id="WL2-ke-S31"/>
+                    </connections>
+                </viewController>
+                <customObject id="Uki-0K-iyz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1309" y="1915"/>
+        </scene>
+        <!--Networking-->
+        <scene sceneID="tZm-Nh-8bG">
+            <objects>
+                <viewController title="Networking" id="R9l-Yx-WOc" customClass="VMConfigTVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="u9l-fB-BAU">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="85"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yh2-l8-9LM">
+                                <rect key="frame" x="18" y="49" width="78" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="NIC Options" placeholderString="4" id="KB6-FZ-Iwb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZr-cL-ZsT">
+                                <rect key="frame" x="32" y="20" width="398" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fcl-Xf-2Oa">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="XfG-lQ-9wD" name="displayPatternValue1" keyPath="self.nicOptionsTextField" id="e8y-kI-XOh">
+                                            <dictionary key="options">
+                                                <string key="NSDisplayPattern">%{value1}@</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="nicOptionsTextField" destination="yZr-cL-ZsT" id="Ekk-tK-VUA"/>
+                    </connections>
+                </viewController>
+                <customObject id="hfp-IB-lR8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1840" y="1265.5"/>
+        </scene>
+        <!--USB-->
+        <scene sceneID="UEr-rW-RYy">
+            <objects>
+                <viewController title="USB" id="3Ia-tA-jxu" customClass="VMConfigTVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="YFQ-p7-K1h">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="jRe-65-RfG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-335" y="1732"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6bW-UM-lfJ"/>
+        <segue reference="4GJ-XX-DCp"/>
         <segue reference="oEB-Gt-Nuw"/>
     </inferredMetricsTieBreakers>
     <resources>
