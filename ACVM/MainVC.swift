@@ -55,7 +55,8 @@ class MainVC: NSViewController {
         reloadFileList()
     }
     
-    func findAllVMConfigs() {
+    func findAllVMConfigs() -> Bool {
+        var retVal = false
         let fm = FileManager.default
         let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
@@ -74,11 +75,14 @@ class MainVC: NSViewController {
                             // Item exists
                         } else {
                             vmList!.append(vm)
+                            retVal = true
                         }
                     }
                 }
             }
-                        
+                
+            let numOfVMs = vmList?.count
+            
             vmList!.removeAll(where: { element in
                 if !FileManager.default.fileExists(atPath: directoryURL.path + "/" + element.config.vmname + ".plist") {
                     return true
@@ -88,6 +92,10 @@ class MainVC: NSViewController {
                 }
             })
             
+            if numOfVMs != vmList?.count {
+                retVal = true
+            }
+            
         } catch {
             // failed to read directory – bad permissions, perhaps?
         }
@@ -95,6 +103,8 @@ class MainVC: NSViewController {
         vmList?.sort {
             $0.config.vmname.uppercased() < $1.config.vmname.uppercased()
         }
+        
+        return retVal
     }
     
     func populateVMAttributes(_ vm: VirtualMachine) {
@@ -124,17 +134,24 @@ class MainVC: NSViewController {
     }
     
     func refreshVMList() {
-        reloadFileList()
-        
         vmNameTextField.stringValue = ""
         vmCoresTextField.stringValue = ""
         vmRAMTextField.stringValue = ""
         vmStateTextField.stringValue = ""
+        
+        reloadFileList()
     }
     
     func reloadFileList() {
-        findAllVMConfigs()
+        let curRow = vmConfigTableView.selectedRow
+        let rowsAddedOrRemove = findAllVMConfigs()
         vmConfigTableView.reloadData()
+        
+        if rowsAddedOrRemove {
+            vmConfigTableView.selectRow(at: -1)
+        } else {
+            vmConfigTableView.selectRow(at: curRow)
+        }
     }
 
     @objc func tableViewDoubleClick(_ sender:AnyObject) {
@@ -157,6 +174,15 @@ class MainVC: NSViewController {
         }
     }
     
+}
+
+extension NSTableView {
+    func selectRow(at index: Int) {
+        selectRowIndexes(.init(integer: index), byExtendingSelection: false)
+        if let action = action {
+            perform(action)
+        }
+    }
 }
 
 extension MainVC: NSTableViewDataSource {
