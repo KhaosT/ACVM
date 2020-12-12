@@ -260,8 +260,6 @@ class MainWC: NSWindowController {
             "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
-            "-device", "usb-mouse",
-            "-device", "usb-kbd",
             "-nic", "user,model=virtio" + nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
