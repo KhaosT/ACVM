@@ -324,7 +324,6 @@ class MainWC: NSWindowController {
             
             }
             
-            // This only seems to work for the first connection, then fails on the secondz
             let client = TCPClient()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
