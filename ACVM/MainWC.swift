@@ -251,8 +251,8 @@ class MainWC: NSWindowController {
             "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
-            //"-device", "usb-mouse",
-            //"-device", "usb-kbd",
+            "-device", "usb-mouse",
+            "-device", "usb-kbd",
             "-nic", "user,model=virtio" + virtMachine.config.nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
@@ -287,7 +287,7 @@ class MainWC: NSWindowController {
             ]
         }
         
-        if 1==1 {
+        if 1==0 {
             arguments += [
                 "-usb",
                 //"-device", "usb-host,hostbus=0,hostaddr=1"
@@ -320,9 +320,8 @@ class MainWC: NSWindowController {
             // This only seems to work for the first connection, then fails on the secondz
             let client = TCPClient()
             
-            client.setupNetworkCommunication(UInt32(port))
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                client.setupNetworkCommunication(UInt32(port))
                 client.initQMPConnection()
                 self.virtMachine.client = client
             }
