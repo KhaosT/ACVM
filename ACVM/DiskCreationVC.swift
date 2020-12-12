@@ -34,7 +34,7 @@ class DiskCreationVC: NSViewController {
         savePanel.message = "Select location to save new disk image."
         savePanel.nameFieldStringValue = "NewDisk"
         
-        savePanel.beginSheetModal(for: self.view.window!, completionHandler: { (result) in
+        savePanel.begin(completionHandler: { (result) in
                 if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
                     self.diskLocationTextField.stringValue = savePanel.url!.path
                     self.createButton.isEnabled = true
