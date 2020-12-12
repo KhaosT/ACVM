@@ -31,6 +31,7 @@
 		FB57FBEB258198710036073E /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57FBEA258198710036073E /* VirtualMachine.swift */; };
 		FB8815F6257F2F63003147DB /* MainWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8815F5257F2F63003147DB /* MainWC.swift */; };
 		FBA80F2A25804268005580AE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA80F2925804268005580AE /* MainVC.swift */; };
+		FBF26469258493A50010129F /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF26468258493A50010129F /* TCPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		FB678E342581DFC100573606 /* qemu-img */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-img"; sourceTree = "<group>"; };
 		FB8815F5257F2F63003147DB /* MainWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWC.swift; sourceTree = "<group>"; };
 		FBA80F2925804268005580AE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		FBF26468258493A50010129F /* TCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		CC032B552574D9A6002CE035 = {
 			isa = PBXGroup;
 			children = (
+				FBF26468258493A50010129F /* TCPClient.swift */,
 				CC032B862574EAC7002CE035 /* Dylibs */,
 				CC032B602574D9A6002CE035 /* ACVM */,
 				CC032B5F2574D9A6002CE035 /* Products */,
@@ -249,6 +252,7 @@
 				FBA80F2A25804268005580AE /* MainVC.swift in Sources */,
 				FB34EA692581D8CB0029341F /* DiskCreationVC.swift in Sources */,
 				FB8815F6257F2F63003147DB /* MainWC.swift in Sources */,
+				FBF26469258493A50010129F /* TCPClient.swift in Sources */,
 				CC032B622574D9A6002CE035 /* AppDelegate.swift in Sources */,
 				CC032B842574E137002CE035 /* FileDropView.swift in Sources */,
 				FB3E916F2584518200A18195 /* ConfigTVC.swift in Sources */,

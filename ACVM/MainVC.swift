@@ -81,11 +81,9 @@ class MainVC: NSViewController {
                         
             vmList!.removeAll(where: { element in
                 if !FileManager.default.fileExists(atPath: directoryURL.path + "/" + element.config.vmname + ".plist") {
-                    print(directoryURL.path + "/" + element.config.vmname + ".plist" + " - NOT FOUND")
                     return true
                 }
                 else {
-                    print(directoryURL.path + "/" + element.config.vmname + ".plist" + " - FOUND")
                     return false
                 }
             })
