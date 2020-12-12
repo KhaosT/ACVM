@@ -101,7 +101,6 @@
 		CC032B552574D9A6002CE035 = {
 			isa = PBXGroup;
 			children = (
-				FBF26468258493A50010129F /* TCPClient.swift */,
 				CC032B862574EAC7002CE035 /* Dylibs */,
 				CC032B602574D9A6002CE035 /* ACVM */,
 				CC032B5F2574D9A6002CE035 /* Products */,
@@ -135,6 +134,7 @@
 				FB159BFA2581DF3E00BA28F2 /* qemu-system-aarch64 */,
 				FB678E342581DFC100573606 /* qemu-img */,
 				FB57FBEA258198710036073E /* VirtualMachine.swift */,
+				FBF26468258493A50010129F /* TCPClient.swift */,
 			);
 			path = ACVM;
 			sourceTree = "<group>";
