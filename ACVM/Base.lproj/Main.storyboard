@@ -446,14 +446,14 @@
                                         <action selector="didTapStopButton:" target="RBg-j4-FIX" id="rMs-W4-4ul"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="YcB-UV-wFe"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="8AD-aU-6dL"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="rtb-o7-mBq"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="YQm-xo-62Q"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="wSA-aY-Vfe"/>
                                 <toolbarItem reference="0Ap-VF-yZz"/>
                                 <toolbarItem reference="Hcn-hJ-YdO"/>
-                                <toolbarItem reference="8AD-aU-6dL"/>
+                                <toolbarItem reference="rtb-o7-mBq"/>
                                 <toolbarItem reference="HoZ-oK-oem"/>
                                 <toolbarItem reference="ZyF-G7-Rfu"/>
                                 <toolbarItem reference="vaa-0C-zqO"/>
@@ -865,7 +865,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbg-nH-f1M">
-                                <rect key="frame" x="17" y="77" width="100" height="25"/>
+                                <rect key="frame" x="17" y="77" width="112" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="ramfb" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qGm-Ph-V7f" id="2ho-Ac-yil">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -883,14 +883,6 @@ CA
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru7-nj-u2l">
-                                <rect key="frame" x="136" y="82" width="158" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="unhide mouse pointer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JEL-WA-QCu">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdF-II-af2">
                                 <rect key="frame" x="18" y="48" width="290" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -943,6 +935,14 @@ DQ
                                 <rect key="frame" x="0.0" y="70" width="450" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru7-nj-u2l">
+                                <rect key="frame" x="145" y="83" width="158" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="unhide mouse pointer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JEL-WA-QCu">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1010,7 +1010,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nxu-Ws-5Sv">
-                                <rect key="frame" x="90" y="77" width="78" height="25"/>
+                                <rect key="frame" x="90" y="77" width="89" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="qcow2" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jOc-qw-xQb" id="T9V-hg-y9K">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1190,7 +1190,7 @@ DQ
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kX9-F4-jaa">
-                                                    <rect key="frame" x="14" y="69" width="100" height="25"/>
+                                                    <rect key="frame" x="14" y="69" width="118" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="ramfb" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ubb-e3-HiT" id="mVw-rV-fbd">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1212,7 +1212,7 @@ CA
                                                     </connections>
                                                 </popUpButton>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SW6-Fx-2XD">
-                                                    <rect key="frame" x="133" y="74" width="158" height="18"/>
+                                                    <rect key="frame" x="149" y="74" width="158" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="unhide mouse pointer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YcF-7C-sj9">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1228,12 +1228,12 @@ CA
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-Ck-wlJ" customClass="FileDropView" customModule="ACVM" customModuleProvider="target">
-                                                    <rect key="frame" x="109" y="168" width="62" height="58"/>
+                                                    <rect key="frame" x="21" y="166" width="62" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="F4C-tk-UTB"/>
                                                 </imageView>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWg-yn-9Sj">
-                                                    <rect key="frame" x="103" y="147" width="74" height="16"/>
+                                                    <rect key="frame" x="15" y="145" width="74" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Main Image" id="ECG-9O-StE">
                                                         <font key="font" metaFont="system"/>
@@ -1242,12 +1242,12 @@ CA
                                                     </textFieldCell>
                                                 </textField>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pc-di-Jkm" customClass="FileDropView" customModule="ACVM" customModuleProvider="target">
-                                                    <rect key="frame" x="198" y="168" width="61" height="58"/>
+                                                    <rect key="frame" x="327" y="166" width="61" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="E7z-zC-XOF"/>
                                                 </imageView>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fx3-ft-C18">
-                                                    <rect key="frame" x="198" y="131" width="61" height="28"/>
+                                                    <rect key="frame" x="327" y="129" width="61" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" selectable="YES" alignment="center" title="CD Image (Optional)" id="cXQ-PR-mFu">
                                                         <font key="font" metaFont="smallSystem"/>
@@ -1256,7 +1256,7 @@ CA
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-bh-zqL">
-                                                    <rect key="frame" x="15" y="103" width="176" height="18"/>
+                                                    <rect key="frame" x="15" y="82" width="176" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="use virtio for Main Image" bezelStyle="regularSquare" imagePosition="left" inset="2" id="73W-oQ-yRv">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1264,7 +1264,7 @@ CA
                                                     </buttonCell>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4sw-jY-Q4y">
-                                                    <rect key="frame" x="15" y="57" width="282" height="39"/>
+                                                    <rect key="frame" x="15" y="36" width="282" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" placeholderString="4" id="A40-da-4FV">
                                                         <font key="font" metaFont="system" size="10"/>
@@ -1273,10 +1273,18 @@ CA
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmB-Xx-7t0">
-                                                    <rect key="frame" x="10" y="10" width="86" height="32"/>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DOz-3g-6Xo">
+                                                    <rect key="frame" x="15" y="106" width="188" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="push" title="Create..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hfa-mg-i0T">
+                                                    <buttonCell key="cell" type="check" title="enable writethrough cache" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8Ag-x5-MnO">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmB-Xx-7t0">
+                                                    <rect key="frame" x="10" y="1" width="153" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Create new disk..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hfa-mg-i0T">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -1365,6 +1373,7 @@ DQ
                         <outlet property="cancelButton" destination="5Jw-H1-e2k" id="FOj-v4-XZc"/>
                         <outlet property="cdImage" destination="1Pc-di-Jkm" id="F23-y0-aIT"/>
                         <outlet property="cpuTextField" destination="Aad-aw-ytP" id="aah-OH-WS2"/>
+                        <outlet property="enableWriteThroughCache" destination="DOz-3g-6Xo" id="gHO-We-G6j"/>
                         <outlet property="graphicPopupButton" destination="kX9-F4-jaa" id="B7e-fa-Aos"/>
                         <outlet property="mainImage" destination="hhY-Ck-wlJ" id="Bxz-ND-TgP"/>
                         <outlet property="nicOptionsTextField" destination="VlB-ep-dlQ" id="3YE-Q0-2cq"/>
@@ -1512,7 +1521,7 @@ DQ
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4GJ-XX-DCp"/>
+        <segue reference="HEI-Jc-jYB"/>
         <segue reference="oEB-Gt-Nuw"/>
     </inferredMetricsTieBreakers>
     <resources>

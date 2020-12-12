@@ -98,12 +98,14 @@ class MainWC: NSWindowController {
         virtMachine.process = nil
         virtMachine.state = 0
         
-        virtMachine.client!.close()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.virtMachine.client = nil
+        if virtMachine.client != nil {
+            virtMachine.client!.close()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.virtMachine.client = nil
+            }
         }
-        
+
         virtMachine.config.cdImage = ""
         let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
@@ -262,14 +264,19 @@ class MainWC: NSWindowController {
             "-mon", "chardev=mon0,mode=control,pretty=on"
         ]
         
+        var useCace = ""
+        if virtMachine.config.mainImageUseWTCache {
+            useCace = ",cache=writethrough"
+        }
+        
         if virtMachine.config.mainImageUseVirtIO {
             arguments += [
-                "-drive", "file=\(mainImage.path),if=virtio,id=boot,cache=writethrough",
+                "-drive", "file=\(mainImage.path),if=virtio,id=boot\(useCace)",
             ]
         }
         else {
             arguments += [
-                "-drive", "file=\(mainImage.path),if=none,id=boot,cache=writethrough",
+                "-drive", "file=\(mainImage.path),if=none,id=boot\(useCace)",
                 "-device", "nvme,drive=boot,serial=boot"
             ]
         }
