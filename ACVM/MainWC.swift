@@ -205,13 +205,16 @@ class MainWC: NSWindowController {
             "-M", "virt,highmem=no",
             "-accel", "hvf",
             "-cpu", "host",
-            "-smp", String(virtMachine.config.cores),
+            "-name", virtMachine.config.vmname,
+            "-smp", "cpus=" + String(virtMachine.config.cores) + ",sockets=1,cores=" + String(virtMachine.config.cores) + ",threads=1",
             "-m", String(virtMachine.config.ram) + "M",
             "-bios", efiURL.path,
             "-device", virtMachine.config.graphicOptions,
             "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
+            "-device", "usb-mouse",
+            "-device", "usb-kbd",
             "-nic", "user,model=virtio" + virtMachine.config.nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
@@ -241,6 +244,16 @@ class MainWC: NSWindowController {
         if virtMachine.config.unhideMousePointer {
             arguments += [
                 "-display","cocoa,show-cursor=on"
+            ]
+        }
+        
+        if 1==0 {
+            arguments += [
+                "-usb",
+                "-device", "usb-host,hostbus=0,hostaddr=0"
+                // hostaddr=1 doesn't show anything in linux
+                // hostaddr=0 shows a record in lsusb
+                //"-device", "usb-host,vendorid=0x0781,productid=0x5581"
             ]
         }
         
