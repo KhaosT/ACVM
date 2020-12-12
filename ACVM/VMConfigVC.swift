@@ -267,7 +267,7 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
         var options = ""
         
         if !nicOptionsTextField.stringValue.isEmpty {
-            options += ",\(nicOptionsTextField.stringValue)"
+            options = nicOptionsTextField.stringValue
         }
         
         return options

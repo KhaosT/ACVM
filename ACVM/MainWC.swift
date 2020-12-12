@@ -107,6 +107,7 @@ class MainWC: NSWindowController {
         }
 
         virtMachine.config.cdImage = ""
+        cdImageURL = nil
         let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
           
@@ -241,6 +242,12 @@ class MainWC: NSWindowController {
         
         let port = Int.random(in: 60000...65000)
         
+        var nicOptions = ""
+        
+        if !virtMachine.config.nicOptions.isEmpty {
+            nicOptions += ",\(virtMachine.config.nicOptions)"
+        }
+        
         var arguments: [String] = [
             "-M", "virt,highmem=no",
             "-accel", "hvf",
@@ -255,7 +262,7 @@ class MainWC: NSWindowController {
             "-device", "usb-tablet",
             "-device", "usb-mouse",
             "-device", "usb-kbd",
-            "-nic", "user,model=virtio" + virtMachine.config.nicOptions,
+            "-nic", "user,model=virtio" + nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
             "-device", "intel-hda",
