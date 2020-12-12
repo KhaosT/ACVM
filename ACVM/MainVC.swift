@@ -49,8 +49,6 @@ class MainVC: NSViewController {
         vmConfigTableView.dataSource = self
         vmConfigTableView.target = self
         vmConfigTableView.doubleAction = #selector(tableViewDoubleClick(_:))
-        //vmConfigTableView.doubleAction = vmConfigTableView.action
-        vmConfigTableView.action = nil
         
         setupNotifications()
                     
@@ -147,16 +145,10 @@ class MainVC: NSViewController {
             return
         }
         
-        /*if let myViewController = self.storyboard?.instantiateController(withIdentifier: "vmconfig") as? VMConfigVC {
-            myViewController.virtMachine = item
-            //self.view.window?.contentViewController = myViewController
-            
-            self.view.window?.beginSheet(myViewController.view.window!, completionHandler: { (response) in
-                
-            })
-        }*/
-        
-        //self.view.window!
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateController(withIdentifier: "vmconfig") as! VMConfigVC
+        vc.virtMachine = item
+        self.presentAsSheet(vc)
         
     }
     
