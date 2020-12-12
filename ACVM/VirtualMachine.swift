@@ -56,5 +56,6 @@ class VirtualMachine {
     var config:VmConfiguration = VmConfiguration()
     
     var process:Process?
+    var client:TCPClient?
     var state:Int = 0
 }

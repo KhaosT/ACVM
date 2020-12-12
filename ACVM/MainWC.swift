@@ -1,5 +1,5 @@
 //
-//  WindowController.swift
+//  MainWC.swift
 //  ACVM
 //
 //  Created by Ben Mackin on 12/7/20.
@@ -7,6 +7,7 @@
 
 import Foundation
 import Cocoa
+import Network
 
 class MainWC: NSWindowController {
 
@@ -65,17 +66,43 @@ class MainWC: NSWindowController {
     }
     
     @IBAction func didTapPauseButton(_ sender: NSToolbarItem) {
-        
+        virtMachine.client!.send(message: "{ \"execute\": \"stop\" }\r\n")
+        virtMachine.state = 2
+        updateStates()
+    }
+    
+    @IBAction func didTapUnPauseButton(_ sender: NSToolbarItem) {
+        virtMachine.client!.send(message: "{ \"execute\": \"cont\" }\r\n")
+        virtMachine.state = 1
+        updateStates()
     }
     
     @IBAction func didTapStopButton(_ sender: NSToolbarItem) {
-        virtMachine.process?.terminate()
-        cleanUpProcessOnStop()
+        //virtMachine.process?.terminate()
+        
+        if virtMachine.state == 2 {
+            virtMachine.client!.send(message: "{ \"execute\": \"cont\" }\r\n")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.virtMachine.client!.send(message: "{ \"execute\": \"system_powerdown\" }\r\n")
+            }
+        } else {
+            virtMachine.client!.send(message: "{ \"execute\": \"system_powerdown\" }\r\n")
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.cleanUpProcessOnStop()
+        }
     }
     
     func cleanUpProcessOnStop() {
         virtMachine.process = nil
         virtMachine.state = 0
+        
+        virtMachine.client!.close()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.virtMachine.client = nil
+        }
         
         virtMachine.config.cdImage = ""
         let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
@@ -119,20 +146,20 @@ class MainWC: NSWindowController {
     
     private func updateStates() {
         
-        if virtMachine.state == 0 {
+        if virtMachine.state == 0 { // Stopped
             stopButton.action = nil
             startButton.action = #selector(didTapStartButton(_:))
             pauseButton.action = nil
             deleteButton.action = #selector(didTapDeleteVMButton(_:))
-        } else if virtMachine.state == 1 {
+        } else if virtMachine.state == 1 { // Started
             stopButton.action = #selector(didTapStopButton(_:))
             startButton.action = nil
-            pauseButton.action = nil //#selector(didTapPauseButton(_:))
+            pauseButton.action = #selector(didTapPauseButton(_:))
             deleteButton.action = nil
-        } else if virtMachine.state == 2 {
+        } else if virtMachine.state == 2 { // Paused
             stopButton.action = #selector(didTapStopButton(_:))
-            startButton.action = #selector(didTapStartButton(_:))
-            pauseButton.action = nil
+            startButton.action = nil //#selector(didTapStartButton(_:))
+            pauseButton.action = #selector(didTapUnPauseButton(_:))
             deleteButton.action = #selector(didTapDeleteVMButton(_:))
         }
         
@@ -195,11 +222,22 @@ class MainWC: NSWindowController {
             return
         }
         
+        var icon = NSImage()
+        icon = NSImage(named: "qemu")!
+        
+        let qemu = NSWorkspace()
+        qemu.setIcon(icon, forFile: Bundle.main.url(
+            forResource: "qemu-system-aarch64",
+            withExtension: nil
+        )!.path)
+        
         let process = Process()
         process.executableURL = Bundle.main.url(
             forResource: "qemu-system-aarch64",
             withExtension: nil
         )
+        
+        let port = Int.random(in: 60000...65000)
         
         var arguments: [String] = [
             "-M", "virt,highmem=no",
@@ -213,13 +251,15 @@ class MainWC: NSWindowController {
             "-device", "qemu-xhci",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
-            "-device", "usb-mouse",
-            "-device", "usb-kbd",
+            //"-device", "usb-mouse",
+            //"-device", "usb-kbd",
             "-nic", "user,model=virtio" + virtMachine.config.nicOptions,
             "-rtc", "base=localtime,clock=host",
             "-drive", "file=\(virtMachine.config.nvram),format=raw,if=pflash,index=1",
             "-device", "intel-hda",
-            "-device", "hda-duplex"
+            "-device", "hda-duplex",
+            "-chardev", "socket,id=mon0,host=localhost,port=\(port),server,nowait",
+            "-mon", "chardev=mon0,mode=control,pretty=on"
         ]
         
         if virtMachine.config.mainImageUseVirtIO {
@@ -247,13 +287,13 @@ class MainWC: NSWindowController {
             ]
         }
         
-        if 1==0 {
+        if 1==1 {
             arguments += [
                 "-usb",
-                "-device", "usb-host,hostbus=0,hostaddr=0"
+                //"-device", "usb-host,hostbus=0,hostaddr=1"
                 // hostaddr=1 doesn't show anything in linux
                 // hostaddr=0 shows a record in lsusb
-                //"-device", "usb-host,vendorid=0x0781,productid=0x5581"
+                "-device", "usb-host,vendorid=0x0781,productid=0x5581"
             ]
         }
         
@@ -270,12 +310,30 @@ class MainWC: NSWindowController {
         virtMachine.process = process
         virtMachine.state = 1
         
-        updateStates()
-
         do {
             try process.run()
+            
+            while !process.isRunning {
+            
+            }
+            
+            // This only seems to work for the first connection, then fails on the secondz
+            let client = TCPClient()
+            
+            client.setupNetworkCommunication(UInt32(port))
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                client.initQMPConnection()
+                self.virtMachine.client = client
+            }
+            
         } catch {
             NSLog("Failed to run, error: \(error)")
+            
+            virtMachine.process = nil
+            virtMachine.state = 0
         }
+        
+        updateStates()
     }
 }
