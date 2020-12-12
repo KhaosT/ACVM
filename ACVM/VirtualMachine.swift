@@ -18,7 +18,7 @@ struct VmConfiguration: Codable {
     var nicOptions:String = ""
     var nvram:String = ""
     var mainImageUseVirtIO:Bool = false
-    var mainImageUseWTCache:Bool = false
+    var mainImageUseWTCache:Bool = true
     
     enum CodingKeys: String, CodingKey {
         case vmname = "vmname"
@@ -50,7 +50,7 @@ struct VmConfiguration: Codable {
         nicOptions = try values.decodeIfPresent(String.self, forKey: .nicOptions) ?? ""
         nvram = try values.decodeIfPresent(String.self, forKey: .nvram) ?? ""
         mainImageUseVirtIO = try values.decodeIfPresent(Bool.self, forKey: .mainImageUseVirtIO) ?? false
-        mainImageUseWTCache = try values.decodeIfPresent(Bool.self, forKey: .mainImageUseWTCache) ?? false
+        mainImageUseWTCache = try values.decodeIfPresent(Bool.self, forKey: .mainImageUseWTCache) ?? true
     }
 }
 

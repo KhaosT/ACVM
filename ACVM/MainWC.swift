@@ -264,19 +264,19 @@ class MainWC: NSWindowController {
             "-mon", "chardev=mon0,mode=control,pretty=on"
         ]
         
-        var useCace = ""
+        var useCace = "directsync"
         if virtMachine.config.mainImageUseWTCache {
-            useCace = ",cache=writethrough"
+            useCace = "writethrough"
         }
         
         if virtMachine.config.mainImageUseVirtIO {
             arguments += [
-                "-drive", "file=\(mainImage.path),if=virtio,id=boot\(useCace)",
+                "-drive", "file=\(mainImage.path),if=virtio,id=boot,cache=\(useCace)",
             ]
         }
         else {
             arguments += [
-                "-drive", "file=\(mainImage.path),if=none,id=boot\(useCace)",
+                "-drive", "file=\(mainImage.path),if=none,id=boot,cache=\(useCace)",
                 "-device", "nvme,drive=boot,serial=boot"
             ]
         }
