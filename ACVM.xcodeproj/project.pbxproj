@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B633E36EB39ED956691F1478 /* Pods_ACVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1978F9AFBE672B763161F8B2 /* Pods_ACVM.framework */; };
 		CC032B622574D9A6002CE035 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B612574D9A6002CE035 /* AppDelegate.swift */; };
 		CC032B642574D9A6002CE035 /* VMConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B632574D9A6002CE035 /* VMConfigVC.swift */; };
 		CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC032B652574D9A7002CE035 /* Assets.xcassets */; };
@@ -57,6 +58,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02A7AB5C4544449BE84EB25A /* Pods-ACVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACVM.debug.xcconfig"; path = "Target Support Files/Pods-ACVM/Pods-ACVM.debug.xcconfig"; sourceTree = "<group>"; };
+		1978F9AFBE672B763161F8B2 /* Pods_ACVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4F993756CA48707ED838C96 /* Pods-ACVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACVM.release.xcconfig"; path = "Target Support Files/Pods-ACVM/Pods-ACVM.release.xcconfig"; sourceTree = "<group>"; };
 		CC032B5E2574D9A6002CE035 /* ACVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC032B612574D9A6002CE035 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC032B632574D9A6002CE035 /* VMConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMConfigVC.swift; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		FB3E916E2584518200A18195 /* ConfigTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTVC.swift; sourceTree = "<group>"; };
 		FB57FBEA258198710036073E /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
 		FB678E342581DFC100573606 /* qemu-img */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-img"; sourceTree = "<group>"; };
+		FB7466642585E64B0074730A /* appcast.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = appcast.xml; sourceTree = "<group>"; };
 		FB8815F5257F2F63003147DB /* MainWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWC.swift; sourceTree = "<group>"; };
 		FBA80F2925804268005580AE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		FBF26468258493A50010129F /* TCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
@@ -92,19 +97,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B633E36EB39ED956691F1478 /* Pods_ACVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D85BD8F85AF1781EC53E565 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02A7AB5C4544449BE84EB25A /* Pods-ACVM.debug.xcconfig */,
+				C4F993756CA48707ED838C96 /* Pods-ACVM.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		363E548E6E6BAD80DA088628 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1978F9AFBE672B763161F8B2 /* Pods_ACVM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC032B552574D9A6002CE035 = {
 			isa = PBXGroup;
 			children = (
+				FB7466642585E64B0074730A /* appcast.xml */,
 				FBF26468258493A50010129F /* TCPClient.swift */,
 				CC032B862574EAC7002CE035 /* Dylibs */,
 				CC032B602574D9A6002CE035 /* ACVM */,
 				CC032B5F2574D9A6002CE035 /* Products */,
+				0D85BD8F85AF1781EC53E565 /* Pods */,
+				363E548E6E6BAD80DA088628 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,10 +205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC032B6E2574D9A7002CE035 /* Build configuration list for PBXNativeTarget "ACVM" */;
 			buildPhases = (
+				A64595D829F4BA8F6D431F6F /* [CP] Check Pods Manifest.lock */,
 				CC032B5A2574D9A6002CE035 /* Sources */,
 				CC032B5B2574D9A6002CE035 /* Frameworks */,
 				CC032B5C2574D9A6002CE035 /* Resources */,
 				CC032B9B2574EADD002CE035 /* Embed Libraries */,
+				2B1DB7C9E6E996DC06980F1A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,6 +268,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B1DB7C9E6E996DC06980F1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ACVM/Pods-ACVM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ACVM/Pods-ACVM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ACVM/Pods-ACVM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A64595D829F4BA8F6D431F6F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ACVM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC032B5A2574D9A6002CE035 /* Sources */ = {
@@ -392,17 +462,22 @@
 		};
 		CC032B6F2574D9A7002CE035 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02A7AB5C4544449BE84EB25A /* Pods-ACVM.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ACVM/ACVM.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LYYD96F2J8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = ACVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -422,17 +497,22 @@
 		};
 		CC032B702574D9A7002CE035 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4F993756CA48707ED838C96 /* Pods-ACVM.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ACVM/ACVM.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LYYD96F2J8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = ACVM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

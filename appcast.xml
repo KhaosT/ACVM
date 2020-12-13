@@ -14,9 +14,9 @@
 </ul>
 ]]>
 </description>
-<pubDate>Sat, 22 Jun 2019 11:14:56 -0700</pubDate>
+<pubDate>Sat, 12 Dec 2020 22:13:38 -0800</pubDate>
 <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/ubenmackin/ACVM/releases/download/v1.1-2/ACVM.zip" sparkle:version="11" sparkle:shortVersionString="1.1" length="7076427" type="application/octet-stream"/>
+<enclosure url="https://github.com/ubenmackin/ACVM/releases/download/v1.1-2/ACVM.zip" sparkle:version="2" sparkle:shortVersionString="1.1" length="24008047" type="application/octet-stream"/>
 </item>
 </channel>
 </rss>
