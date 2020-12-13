@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<channel>
+<title>DeskStats</title>
+<item>
+<title>1.1</title>
+<description><![CDATA[
+<h2>New Features</h2>
+<ul>
+<li>Initial release of DeskStats</li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul>
+<li>None</li>
+</ul>
+]]>
+</description>
+<pubDate>Sat, 22 Jun 2019 11:14:56 -0700</pubDate>
+<sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/ubenmackin/ACVM/releases/download/v1.1-2/ACVM.zip" sparkle:version="11" sparkle:shortVersionString="1.1" length="7076427" type="application/octet-stream"/>
+</item>
+</channel>
+</rss>
