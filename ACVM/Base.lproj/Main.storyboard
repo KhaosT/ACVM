@@ -481,14 +481,14 @@
             <objects>
                 <viewController id="jIb-RV-V5Y" customClass="MainVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wXd-U4-ozg">
-                        <rect key="frame" x="0.0" y="0.0" width="550" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="633" height="353"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="g2a-I4-Jbn">
-                                <rect key="frame" x="224" y="117" width="306" height="133"/>
+                                <rect key="frame" x="224" y="200" width="384" height="133"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="8va-ru-Q7V">
-                                    <rect key="frame" x="1" y="1" width="304" height="131"/>
+                                    <rect key="frame" x="1" y="1" width="382" height="131"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oq9-v4-Wsv">
@@ -586,14 +586,14 @@
                                 </view>
                             </box>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="nXE-a4-mYr">
-                                <rect key="frame" x="0.0" y="0.0" width="204" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="204" height="353"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <clipView key="contentView" ambiguous="YES" id="3tf-aw-Wht">
-                                    <rect key="frame" x="1" y="1" width="202" height="268"/>
+                                <clipView key="contentView" id="3tf-aw-Wht">
+                                    <rect key="frame" x="1" y="1" width="202" height="351"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="pTB-Di-2t2">
-                                            <rect key="frame" x="0.0" y="0.0" width="202" height="268"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="pTB-Di-2t2">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="351"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -612,7 +612,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="VmConfigNameCellID" id="Dpv-pN-aFl">
-                                                            <rect key="frame" x="18" y="0.0" width="185" height="24"/>
+                                                            <rect key="frame" x="8" y="0.0" width="185" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="to0-Eq-TFg">
@@ -648,11 +648,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyZ-3M-lG1">
+                                <rect key="frame" x="224" y="18" width="384" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eQZ-zs-kzc"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="vmConfigTableView" destination="pTB-Di-2t2" id="YvC-kN-JZf"/>
                         <outlet property="vmCoresTextField" destination="CYL-Lu-2pl" id="plm-bF-pbv"/>
+                        <outlet property="vmLiveImage" destination="PyZ-3M-lG1" id="Upo-Os-Xrj"/>
                         <outlet property="vmNameTextField" destination="fnP-dv-gL7" id="VZA-3f-i1x"/>
                         <outlet property="vmRAMTextField" destination="xCV-dP-ByX" id="zPC-s2-RQS"/>
                         <outlet property="vmStateTextField" destination="f1G-zh-w5A" id="5Qn-Co-KJG"/>
@@ -660,7 +666,7 @@
                 </viewController>
                 <customObject id="rwK-kh-Zb9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-690" y="835"/>
+            <point key="canvasLocation" x="-648.5" y="876.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="4g6-h9-0uL">
@@ -1522,7 +1528,7 @@ DQ
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HEI-Jc-jYB"/>
-        <segue reference="oEB-Gt-Nuw"/>
+        <segue reference="eyu-U4-Hb7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSAddTemplate" width="14" height="13"/>

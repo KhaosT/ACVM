@@ -13,6 +13,7 @@ class MainVC: NSViewController {
     @IBOutlet weak var vmStateTextField: NSTextField!
     @IBOutlet weak var vmCoresTextField: NSTextField!
     @IBOutlet weak var vmRAMTextField: NSTextField!
+    @IBOutlet weak var vmLiveImage: NSImageView!
     
     @IBOutlet weak var vmConfigTableView: NSTableView!
     
@@ -109,6 +110,8 @@ class MainVC: NSViewController {
     
     func populateVMAttributes(_ vm: VirtualMachine) {
         let vmConfig = vm.config
+        
+        vmLiveImage.image = vm.liveImage
         
         vmNameTextField.stringValue = vmConfig.vmname
         
