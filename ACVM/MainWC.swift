@@ -190,6 +190,15 @@ class MainWC: NSWindowController {
             configButton.action = configButtonAction
             updateStates()
         }
+        
+        if virtMachine.client != nil {
+            virtMachine.client?.send(message: "{ \"execute\": \"screendump\", \"arguments\": { \"filename\": \"/tmp/here.ppm\" } }\r\n")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.virtMachine.liveImage = NSImage(byReferencingFile: "/tmp/here.ppm")
+            }
+        }
+        
     }
     
     func updateCurrentVMConfig() {
@@ -257,7 +266,7 @@ class MainWC: NSWindowController {
             "-m", String(virtMachine.config.ram) + "M",
             "-bios", efiURL.path,
             "-device", virtMachine.config.graphicOptions,
-            "-device", "qemu-xhci",
+            "-device", "qemu-xhci,p2=8,p3=8",
             "-device", "usb-kbd",
             "-device", "usb-tablet",
             "-nic", "user,model=virtio" + nicOptions,
@@ -301,7 +310,7 @@ class MainWC: NSWindowController {
         
         if 1==0 {
             arguments += [
-                "-usb",
+                //"-usb", "-device", "nec-usb-xhci",
                 //"-device", "usb-host,hostbus=0,hostaddr=1"
                 // hostaddr=1 doesn't show anything in linux
                 // hostaddr=0 shows a record in lsusb
