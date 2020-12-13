@@ -18,6 +18,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        
+        for vm in vmList! {
+            
+            if vm.process != nil {
+                vm.process?.terminate()
+            }
+            
+        }
     }
 
 
