@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Cocoa
 
 struct VmConfiguration: Codable {
     var vmname:String = ""
@@ -61,4 +62,5 @@ class VirtualMachine {
     var process:Process?
     var client:TCPClient?
     var state:Int = 0
+    var liveImage:NSImage?
 }
