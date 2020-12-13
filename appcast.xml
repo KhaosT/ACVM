@@ -18,5 +18,25 @@
 <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
 <enclosure url="https://github.com/ubenmackin/ACVM/releases/download/v1.1-2/ACVM.zip" sparkle:version="2" sparkle:shortVersionString="1.1" length="24008047" type="application/octet-stream"/>
 </item>
+<item>
+            <title>1.2</title>
+            <description><![CDATA[
+            <h2>New Features</h2>
+            <ul>
+            <li>Added a live screen capture of the running VM when viewed in the VM Manager</li>
+            <li>Added Sparkle Auto Updater</li>
+            </ul>
+            <h2>Bug Fixes</h2>
+            <ul>
+            <li>Removed duplicate entry for usb keyboard and usb mouse</li>
+            <li>Fixed initial startup from showing a VM State of Stopped when no VM is selected</li>
+            <li>Fixed issue where closing and reopening the emuFarm window would reset the states of all VMs</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>Sat, 12 Dec 2020 22:24:30 -0800</pubDate>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://raw.githubusercontent.com/ubenmackin/ACVM/main/ACVM.app.zip" sparkle:version="12" sparkle:shortVersionString="1.2" length="25850791" type="application/octet-stream" sparkle:edSignature="lnGY3PUVr41WX0IY6MF7GHShXgntvWYuzM6SDyHBb9C1+nD6ZmWqkdIpbfhL0qpYS8VdlSlBVLyKwi67IHmxCQ=="/>
+        </item>
 </channel>
 </rss>
