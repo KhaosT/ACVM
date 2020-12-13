@@ -443,6 +443,11 @@
                                         <action selector="didTapStartButton:" target="RBg-j4-FIX" id="PJd-u4-7nD"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="F4E41CC3-72E6-4806-A3EE-769196FCEB2D" label="Headless" paletteLabel="Headless" tag="-1" image="NSSlideshowTemplate" sizingBehavior="auto" id="R68-Nz-QDl">
+                                    <connections>
+                                        <action selector="didTapStartButton:" target="RBg-j4-FIX" id="RTo-ph-bqo"/>
+                                    </connections>
+                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D3C8E79D-DCBF-4248-ABCF-F8A5E7BB8A88" label="Pause" paletteLabel="Pause" tag="-1" image="NSTouchBarPauseTemplate" sizingBehavior="auto" id="ZyF-G7-Rfu">
                                     <connections>
                                         <action selector="didTapPauseButton:" target="RBg-j4-FIX" id="Fl0-6R-Fm9"/>
@@ -462,6 +467,7 @@
                                 <toolbarItem reference="Hcn-hJ-YdO"/>
                                 <toolbarItem reference="rtb-o7-mBq"/>
                                 <toolbarItem reference="HoZ-oK-oem"/>
+                                <toolbarItem reference="R68-Nz-QDl"/>
                                 <toolbarItem reference="ZyF-G7-Rfu"/>
                                 <toolbarItem reference="vaa-0C-zqO"/>
                             </defaultToolbarItems>
@@ -473,6 +479,7 @@
                     <connections>
                         <outlet property="configButton" destination="0Ap-VF-yZz" id="i6g-Ag-cbB"/>
                         <outlet property="deleteButton" destination="Hcn-hJ-YdO" id="tg7-w9-wyr"/>
+                        <outlet property="headlessStartButton" destination="R68-Nz-QDl" id="tic-Vx-1Ry"/>
                         <outlet property="pauseButton" destination="ZyF-G7-Rfu" id="o9D-sv-uo8"/>
                         <outlet property="startButton" destination="HoZ-oK-oem" id="l7z-8M-0hF"/>
                         <outlet property="stopButton" destination="vaa-0C-zqO" id="lyi-pk-GPB"/>
@@ -1211,9 +1218,6 @@ DQ
                                                         <menu key="menu" id="N6g-HB-1Jy">
                                                             <items>
                                                                 <menuItem title="ramfb" state="on" id="Ubb-e3-HiT">
-                                                                    <string key="keyEquivalent" base64-UTF8="YES">
-CA
-</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
                                                                 <menuItem title="virtio-gpu" id="ELA-qK-wO2"/>
@@ -1232,6 +1236,17 @@ CA
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                 </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCI-ct-ro4">
+                                                    <rect key="frame" x="15" y="17" width="380" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" id="lfY-yz-abY">
+                                                        <font key="font" metaFont="system" size="11"/>
+                                                        <string key="title">Note: virtio-gpu won't work with Windows guest.
+virtio-gpu is recommended for Linux guests.</string>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -1535,11 +1550,12 @@ DQ
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HEI-Jc-jYB"/>
-        <segue reference="eyu-U4-Hb7"/>
+        <segue reference="oEB-Gt-Nuw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSSlideshowTemplate" width="18" height="14"/>
         <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
         <image name="NSTouchBarPauseTemplate" width="11" height="13"/>
         <image name="NSTouchBarPlayTemplate" width="12" height="13"/>
