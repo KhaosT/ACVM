@@ -27,8 +27,6 @@
 		FB159BFC2581DF3E00BA28F2 /* qemu-system-aarch64 in Resources */ = {isa = PBXBuildFile; fileRef = FB159BFA2581DF3E00BA28F2 /* qemu-system-aarch64 */; };
 		FB2BB2522581E1110000C2D1 /* qemu-img in Resources */ = {isa = PBXBuildFile; fileRef = FB678E342581DFC100573606 /* qemu-img */; };
 		FB34EA692581D8CB0029341F /* DiskCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34EA682581D8CB0029341F /* DiskCreationVC.swift */; };
-		FB3E916725844CD600A18195 /* VMConfigTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E916625844CD600A18195 /* VMConfigTVC.swift */; };
-		FB3E916F2584518200A18195 /* ConfigTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E916E2584518200A18195 /* ConfigTVC.swift */; };
 		FB57FBEB258198710036073E /* VirtualMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57FBEA258198710036073E /* VirtualMachine.swift */; };
 		FB8815F6257F2F63003147DB /* MainWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8815F5257F2F63003147DB /* MainWC.swift */; };
 		FBA80F2A25804268005580AE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA80F2925804268005580AE /* MainVC.swift */; };
@@ -82,8 +80,6 @@
 		CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpixman-1.0.dylib"; sourceTree = "<group>"; };
 		FB159BFA2581DF3E00BA28F2 /* qemu-system-aarch64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-system-aarch64"; sourceTree = "<group>"; };
 		FB34EA682581D8CB0029341F /* DiskCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCreationVC.swift; sourceTree = "<group>"; };
-		FB3E916625844CD600A18195 /* VMConfigTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMConfigTVC.swift; sourceTree = "<group>"; };
-		FB3E916E2584518200A18195 /* ConfigTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTVC.swift; sourceTree = "<group>"; };
 		FB57FBEA258198710036073E /* VirtualMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachine.swift; sourceTree = "<group>"; };
 		FB678E342581DFC100573606 /* qemu-img */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "qemu-img"; sourceTree = "<group>"; };
 		FB7466642585E64B0074730A /* appcast.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = appcast.xml; sourceTree = "<group>"; };
@@ -145,7 +141,6 @@
 		CC032B602574D9A6002CE035 /* ACVM */ = {
 			isa = PBXGroup;
 			children = (
-				FB3E916525844C6400A18195 /* VM Configuration */,
 				CC032B612574D9A6002CE035 /* AppDelegate.swift */,
 				CC032B632574D9A6002CE035 /* VMConfigVC.swift */,
 				FBA80F2925804268005580AE /* MainVC.swift */,
@@ -187,15 +182,6 @@
 				CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */,
 			);
 			path = Dylibs;
-			sourceTree = "<group>";
-		};
-		FB3E916525844C6400A18195 /* VM Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				FB3E916E2584518200A18195 /* ConfigTVC.swift */,
-				FB3E916625844CD600A18195 /* VMConfigTVC.swift */,
-			);
-			path = "VM Configuration";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB3E916725844CD600A18195 /* VMConfigTVC.swift in Sources */,
 				CC032B642574D9A6002CE035 /* VMConfigVC.swift in Sources */,
 				FB57FBEB258198710036073E /* VirtualMachine.swift in Sources */,
 				FBA80F2A25804268005580AE /* MainVC.swift in Sources */,
@@ -325,7 +310,6 @@
 				FBF26469258493A50010129F /* TCPClient.swift in Sources */,
 				CC032B622574D9A6002CE035 /* AppDelegate.swift in Sources */,
 				CC032B842574E137002CE035 /* FileDropView.swift in Sources */,
-				FB3E916F2584518200A18195 /* ConfigTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
