@@ -92,6 +92,14 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
             }
             
             vmNameTextField.isEditable = false
+            
+            if virtMachine.config.mainImage != "" {
+                mainImage.toolTip = URL(fileURLWithPath: virtMachine.config.mainImage).lastPathComponent
+            }
+            
+            if virtMachine.config.cdImage != "" {
+                cdImage.toolTip = URL(fileURLWithPath: virtMachine.config.cdImage).lastPathComponent
+            }
         }
         
         mainImage.delegate = self
