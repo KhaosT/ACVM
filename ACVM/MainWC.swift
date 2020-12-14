@@ -41,9 +41,12 @@ class MainWC: NSWindowController {
                     try FileManager.default.removeItem(atPath: directoryURL.path + "/" + self.virtMachine.config.vmname + ".plist")
                     try FileManager.default.removeItem(atPath: self.virtMachine.config.nvram)
                     
-                    self.virtMachine.process = nil
-                    self.virtMachine.state = 0
-                    self.updateStates()
+                    if self.virtMachine.process != nil {
+                        self.virtMachine.process?.terminate()
+                        self.virtMachine.process = nil
+                        self.virtMachine.state = 0
+                        self.updateStates()
+                    }
                     
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "refreshVMList"), object: nil)
                     self.updateCurrentVMConfig()
@@ -107,8 +110,7 @@ class MainWC: NSWindowController {
             }
         }
 
-        virtMachine.config.cdImage = ""
-        cdImageURL = nil
+        virtMachine.config.mountCDImage = false
         let appSupportURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         let directoryURL = appSupportURL.appendingPathComponent("com.oltica.ACVM")
           
@@ -187,6 +189,8 @@ class MainWC: NSWindowController {
     func updateCurrentVMConfig(_ notification: NSNotification) {
         configButton.action = nil
         startButton.action = nil
+        headlessStartButton.action = nil
+        pauseButton.action = nil
         deleteButton.action = nil
         stopButton.action = nil
         
@@ -228,10 +232,15 @@ class MainWC: NSWindowController {
             mainImageURL = contentURL
         }
         
-        let cdImageFilePath = virtMachine.config.cdImage
-        if FileManager.default.fileExists(atPath: cdImageFilePath) {
-            let contentURL = URL(fileURLWithPath: cdImageFilePath)
-            cdImageURL = contentURL
+        if virtMachine.config.mountCDImage {
+            let cdImageFilePath = virtMachine.config.cdImage
+            if FileManager.default.fileExists(atPath: cdImageFilePath) {
+                let contentURL = URL(fileURLWithPath: cdImageFilePath)
+                cdImageURL = contentURL
+            }
+        }
+        else {
+            cdImageURL = nil
         }
         
         guard let efiURL = Bundle.main.url(forResource: "QEMU_EFI", withExtension: "fd"),
@@ -321,6 +330,7 @@ class MainWC: NSWindowController {
         if 1==0 {
             arguments += [
                 //"-usb", "-device", "nec-usb-xhci",
+                //"-device", "usb-host,hostbus=0,hostaddr=0",
                 //"-device", "usb-host,hostbus=0,hostaddr=1"
                 // hostaddr=1 doesn't show anything in linux
                 // hostaddr=0 shows a record in lsusb
