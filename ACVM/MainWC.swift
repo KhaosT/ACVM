@@ -105,7 +105,7 @@ class MainWC: NSWindowController {
         if virtMachine.client != nil {
             virtMachine.client!.close()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.virtMachine.client = nil
             }
         }
@@ -203,7 +203,7 @@ class MainWC: NSWindowController {
         if virtMachine.client != nil {
             virtMachine.client?.send(message: "{ \"execute\": \"screendump\", \"arguments\": { \"filename\": \"/tmp/here.ppm\" } }\r\n")
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.virtMachine.liveImage = NSImage(byReferencingFile: "/tmp/here.ppm")
             }
         }
@@ -359,6 +359,7 @@ class MainWC: NSWindowController {
             }
             
             let client = TCPClient()
+            client.delegate = self
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 if process.isRunning {
@@ -377,4 +378,10 @@ class MainWC: NSWindowController {
         
         updateStates()
     }
+}
+
+extension MainWC: TCPClientDelegate {
+  func received(message: Message) {
+//    print(message.message)
+  }
 }
