@@ -60,6 +60,33 @@ class MainVC: NSViewController {
         setupNotifications()
                     
         reloadFileList()
+        
+        DispatchQueue.global(qos: .background).async {
+            Timer.scheduledTimer(withTimeInterval: 9, repeats: true) { _ in
+                    self.grabVMScreenImage()
+                }
+                RunLoop.current.run()
+            }
+    }
+    
+    func grabVMScreenImage() {
+        for vm in delegate.vmList! {
+            if vm.client != nil {
+                vm.client?.send(message: "{ \"execute\": \"screendump\", \"arguments\": { \"filename\": \"/tmp/here.ppm\" } }\r\n")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    vm.liveImage = NSImage(byReferencingFile: "/tmp/here.ppm")
+                }
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let row = self.vmConfigTableView.selectedRow
+            
+            if row >= 0 {
+                self.vmLiveImage.image = self.delegate.vmList?[row].liveImage
+            }
+        }
     }
     
     func findAllVMConfigs() -> Bool {
@@ -117,8 +144,6 @@ class MainVC: NSViewController {
     func populateVMAttributes(_ vm: VirtualMachine) {
         let vmConfig = vm.config
         
-        vmLiveImage.image = vm.liveImage
-        
         vmNameTextField.stringValue = vmConfig.vmname
         
         if vmConfig.cores != 0 {
@@ -139,6 +164,8 @@ class MainVC: NSViewController {
         default:
             vmStateTextField.stringValue = ""
         }
+        
+        vmLiveImage.image = vm.liveImage
         
     }
     
@@ -246,10 +273,10 @@ extension MainVC: NSTableViewDelegate {
             
             if vmConfigTableView.selectedRow >= 0,
                let item = delegate.vmList?[vmConfigTableView.selectedRow] {
-                populateVMAttributes(item)
-                
                 let itemInfo:[String: VirtualMachine] = ["config": item]
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "vmConfigChange"), object: nil, userInfo: itemInfo)
+                
+                populateVMAttributes(item)
             }
             else
             {
