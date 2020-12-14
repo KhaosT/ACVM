@@ -604,7 +604,7 @@
                                     <rect key="frame" x="1" y="1" width="202" height="323"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="pTB-Di-2t2">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="fullWidth" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="large" viewBased="YES" id="pTB-Di-2t2">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="323"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
@@ -627,8 +627,9 @@
                                                             <rect key="frame" x="8" y="0.0" width="185" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="to0-Eq-TFg">
-                                                                    <rect key="frame" x="18" y="4" width="78" height="16"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="to0-Eq-TFg">
+                                                                    <rect key="frame" x="0.0" y="4" width="96" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="gZE-x5-wzN">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -636,11 +637,6 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="to0-Eq-TFg" firstAttribute="centerY" secondItem="Dpv-pN-aFl" secondAttribute="centerY" id="5cC-a4-Rl8"/>
-                                                                <constraint firstAttribute="trailing" secondItem="to0-Eq-TFg" secondAttribute="trailing" constant="91" id="Otc-R4-TJA"/>
-                                                                <constraint firstItem="to0-Eq-TFg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dpv-pN-aFl" secondAttribute="leading" constant="20" symbolic="YES" id="Rz1-FI-Nvn"/>
-                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="to0-Eq-TFg" id="TsM-i9-MIX"/>
                                                             </connections>
