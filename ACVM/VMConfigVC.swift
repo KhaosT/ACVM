@@ -14,6 +14,9 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
     @IBOutlet weak var cdImage: FileDropView!
     @IBOutlet weak var vmNameTextField: NSTextField!
     
+    @IBOutlet weak var mountCDImage: NSButtonCell!
+    @IBOutlet weak var removeCDButton: NSButton!
+    
     @IBOutlet weak var cpuTextField: NSTextField!
     @IBOutlet weak var ramTextField: NSTextField!
     @IBOutlet weak var nicOptionsTextField: NSTextField!
@@ -65,6 +68,8 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
         if FileManager.default.fileExists(atPath: cdImageFilePath) {
             let contentURL = URL(fileURLWithPath: cdImageFilePath)
             cdImage.contentURL = contentURL
+            removeCDButton.isEnabled = true
+            mountCDImage.isEnabled = true
         }
         
         if virtMachine.config.unhideMousePointer {
@@ -89,6 +94,14 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
         else
         {
             enableWriteThroughCache.state = .off
+        }
+        
+        if virtMachine.config.mountCDImage {
+            mountCDImage.state = .on
+        }
+        else
+        {
+            mountCDImage.state = .off
         }
         
         graphicPopupButton.selectItem(withTitle: virtMachine.config.graphicOptions)
@@ -151,6 +164,14 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
                 else
                 {
                     virtMachine.config.mainImageUseWTCache = true
+                }
+                
+                if mountCDImage.state == .off {
+                    virtMachine.config.mountCDImage = false
+                }
+                else
+                {
+                    virtMachine.config.mountCDImage = true
                 }
                 
                 virtMachine.config.graphicOptions = displayAdaptor
@@ -227,6 +248,15 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
         }
     }
     
+    @IBAction func didTapRemoveButton(_ sender: Any) {
+        cdImage.contentURL = nil
+        //virtMachine.config.cdImage = ""
+        removeCDButton.isEnabled = false
+        mountCDImage.state = .off
+        mountCDImage.isEnabled = false
+    }
+    
+    
     // MARK: Machine Props
     
     private var vmConfigName: String {
@@ -281,6 +311,8 @@ class VMConfigVC: NSViewController, FileDropViewDelegate {
             mainImage.contentURL = contentURL
         case cdImage:
             cdImage.contentURL = contentURL
+            removeCDButton.isEnabled = true
+            mountCDImage.isEnabled = true
         default:
             break
         }
