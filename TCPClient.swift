@@ -112,7 +112,7 @@ extension TCPClient: StreamDelegate {
                 bytesNoCopy: buffer,
                 length: length,
                 encoding: .utf8,
-                freeWhenDone: true)?.components(separatedBy: ":"),
+                freeWhenDone: true)?.components(separatedBy: "~9999~"),
             let message = stringArray.last
         else {
             return nil
