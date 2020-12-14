@@ -413,12 +413,11 @@
                 <windowController showSeguePresentationStyle="single" id="RBg-j4-FIX" customClass="MainWC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="emuFarm" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="vmmanager" animationBehavior="default" id="ych-qx-8cj">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="199" y="239" width="550" height="270"/>
+                        <rect key="contentRect" x="365" y="429" width="684" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
                         <value key="minSize" type="size" width="550" height="270"/>
                         <view key="contentView" id="Kag-Rf-Luj">
-                            <rect key="frame" x="0.0" y="0.0" width="550" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="684" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <toolbar key="toolbar" implicitIdentifier="C3C56680-E97A-42F9-8606-857A97DFB243" displayMode="iconAndLabel" sizeMode="regular" id="bVu-Je-S3F">
@@ -465,7 +464,6 @@
                                 <toolbarItem reference="wSA-aY-Vfe"/>
                                 <toolbarItem reference="0Ap-VF-yZz"/>
                                 <toolbarItem reference="Hcn-hJ-YdO"/>
-                                <toolbarItem reference="rtb-o7-mBq"/>
                                 <toolbarItem reference="HoZ-oK-oem"/>
                                 <toolbarItem reference="R68-Nz-QDl"/>
                                 <toolbarItem reference="ZyF-G7-Rfu"/>
@@ -488,18 +486,18 @@
                 </windowController>
                 <customObject id="USP-og-66N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-708" y="412"/>
+            <point key="canvasLocation" x="-775" y="412"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="lPL-aU-hah">
             <objects>
                 <viewController id="jIb-RV-V5Y" customClass="MainVC" customModule="ACVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wXd-U4-ozg">
-                        <rect key="frame" x="0.0" y="0.0" width="633" height="353"/>
+                        <rect key="frame" x="0.0" y="0.0" width="633" height="325"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="g2a-I4-Jbn">
-                                <rect key="frame" x="224" y="200" width="384" height="133"/>
+                                <rect key="frame" x="224" y="172" width="384" height="133"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="8va-ru-Q7V">
                                     <rect key="frame" x="1" y="1" width="382" height="131"/>
@@ -600,14 +598,14 @@
                                 </view>
                             </box>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="nXE-a4-mYr">
-                                <rect key="frame" x="0.0" y="0.0" width="204" height="353"/>
+                                <rect key="frame" x="0.0" y="0.0" width="204" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <clipView key="contentView" ambiguous="YES" id="3tf-aw-Wht">
-                                    <rect key="frame" x="1" y="1" width="202" height="351"/>
+                                <clipView key="contentView" id="3tf-aw-Wht">
+                                    <rect key="frame" x="1" y="1" width="202" height="323"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="pTB-Di-2t2">
-                                            <rect key="frame" x="0.0" y="0.0" width="202" height="351"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="pTB-Di-2t2">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="323"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -626,11 +624,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="VmConfigNameCellID" id="Dpv-pN-aFl">
-                                                            <rect key="frame" x="18" y="0.0" width="185" height="24"/>
+                                                            <rect key="frame" x="8" y="0.0" width="185" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="to0-Eq-TFg">
-                                                                    <rect key="frame" x="0.0" y="4" width="185" height="16"/>
+                                                                    <rect key="frame" x="18" y="4" width="78" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="gZE-x5-wzN">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -640,8 +638,8 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="to0-Eq-TFg" firstAttribute="centerY" secondItem="Dpv-pN-aFl" secondAttribute="centerY" id="5cC-a4-Rl8"/>
-                                                                <constraint firstItem="to0-Eq-TFg" firstAttribute="leading" secondItem="Dpv-pN-aFl" secondAttribute="leading" constant="2" id="Rz1-FI-Nvn"/>
-                                                                <constraint firstItem="to0-Eq-TFg" firstAttribute="centerX" secondItem="Dpv-pN-aFl" secondAttribute="centerX" id="UYS-hg-HPE"/>
+                                                                <constraint firstAttribute="trailing" secondItem="to0-Eq-TFg" secondAttribute="trailing" constant="91" id="Otc-R4-TJA"/>
+                                                                <constraint firstItem="to0-Eq-TFg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dpv-pN-aFl" secondAttribute="leading" constant="20" symbolic="YES" id="Rz1-FI-Nvn"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="to0-Eq-TFg" id="TsM-i9-MIX"/>
@@ -663,7 +661,7 @@
                                 </scroller>
                             </scrollView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyZ-3M-lG1">
-                                <rect key="frame" x="224" y="18" width="384" height="162"/>
+                                <rect key="frame" x="224" y="15" width="384" height="137"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eQZ-zs-kzc"/>
                             </imageView>
@@ -1240,7 +1238,7 @@ DQ
                                                     <rect key="frame" x="15" y="17" width="380" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" id="lfY-yz-abY">
-                                                        <font key="font" metaFont="system" size="11"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <string key="title">Note: virtio-gpu won't work with Windows guest.
 virtio-gpu is recommended for Linux guests.</string>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1270,12 +1268,12 @@ virtio-gpu is recommended for Linux guests.</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pc-di-Jkm" customClass="FileDropView" customModule="ACVM" customModuleProvider="target">
-                                                    <rect key="frame" x="327" y="166" width="61" height="58"/>
+                                                    <rect key="frame" x="247" y="166" width="61" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="E7z-zC-XOF"/>
                                                 </imageView>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fx3-ft-C18">
-                                                    <rect key="frame" x="327" y="129" width="61" height="28"/>
+                                                    <rect key="frame" x="247" y="129" width="61" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" selectable="YES" alignment="center" title="CD Image (Optional)" id="cXQ-PR-mFu">
                                                         <font key="font" metaFont="smallSystem"/>
@@ -1318,6 +1316,25 @@ virtio-gpu is recommended for Linux guests.</string>
                                                     </buttonCell>
                                                     <connections>
                                                         <segue destination="2OS-uf-PXm" kind="sheet" id="oEB-Gt-Nuw"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="en0-61-Ftw">
+                                                    <rect key="frame" x="327" y="165" width="65" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Mount" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="AaX-Kf-DeC">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6p-2c-1AE">
+                                                    <rect key="frame" x="316" y="126" width="83" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hlk-V9-IoG">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="didTapRemoveButton:" target="XfG-lQ-9wD" id="dcu-tF-2uJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1404,8 +1421,10 @@ DQ
                         <outlet property="enableWriteThroughCache" destination="DOz-3g-6Xo" id="gHO-We-G6j"/>
                         <outlet property="graphicPopupButton" destination="kX9-F4-jaa" id="B7e-fa-Aos"/>
                         <outlet property="mainImage" destination="hhY-Ck-wlJ" id="Bxz-ND-TgP"/>
+                        <outlet property="mountCDImage" destination="AaX-Kf-DeC" id="7w8-cn-qxQ"/>
                         <outlet property="nicOptionsTextField" destination="VlB-ep-dlQ" id="3YE-Q0-2cq"/>
                         <outlet property="ramTextField" destination="LsP-3N-EmH" id="Zip-CS-1pz"/>
+                        <outlet property="removeCDButton" destination="L6p-2c-1AE" id="XEe-Dj-GBX"/>
                         <outlet property="resetNVRAMButton" destination="7dO-Vc-vt4" id="Dfg-R5-o0H"/>
                         <outlet property="unhideMousePointer" destination="SW6-Fx-2XD" id="4ew-EO-eew"/>
                         <outlet property="useVirtIOForDisk" destination="CuT-bh-zqL" id="dgp-Tm-Xnd"/>
