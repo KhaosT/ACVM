@@ -18,6 +18,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
     @IBOutlet weak var cpuTextField: NSTextField!
     @IBOutlet weak var ramTextField: NSTextField!
     @IBOutlet weak var nicOptionsTextField: NSTextField!
+    @IBOutlet weak var otherArgumentsTextField: NSTextField!
     
     @IBOutlet weak var graphicPopupButton: NSPopUpButton!
     
@@ -62,6 +63,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
             unhideMousePointer.isEnabled = false
             graphicPopupButton.isEnabled = false
             nicOptionsTextField.isEnabled = false
+            otherArgumentsTextField.isEnabled = false
         } else {
             actionButton.title = "Start"
             mainImage.isEnabled = true
@@ -71,6 +73,7 @@ class ViewController: NSViewController, FileDropViewDelegate {
             unhideMousePointer.isEnabled = true
             graphicPopupButton.isEnabled = true
             nicOptionsTextField.isEnabled = true
+            otherArgumentsTextField.isEnabled = true
         }
         
     }
@@ -187,6 +190,9 @@ class ViewController: NSViewController, FileDropViewDelegate {
             arguments += [
                 "-display","cocoa,show-cursor=on"
             ]
+        }
+        if !otherArgumentsTextField.stringValue.isEmpty {
+            arguments += otherArgumentsTextField.stringValue.components(separatedBy: " ")
         }
         process.arguments = arguments
         process.qualityOfService = .userInteractive
