@@ -11,7 +11,6 @@
 		CC032B642574D9A6002CE035 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B632574D9A6002CE035 /* ViewController.swift */; };
 		CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC032B652574D9A7002CE035 /* Assets.xcassets */; };
 		CC032B692574D9A7002CE035 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC032B672574D9A7002CE035 /* Main.storyboard */; };
-		CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */ = {isa = PBXBuildFile; fileRef = CC032B722574DAB0002CE035 /* qemu-system-aarch64 */; };
 		CC032B7D2574DDD6002CE035 /* pc-bios in Resources */ = {isa = PBXBuildFile; fileRef = CC032B7C2574DDD6002CE035 /* pc-bios */; };
 		CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */ = {isa = PBXBuildFile; fileRef = CC032B802574DE69002CE035 /* QEMU_EFI.fd */; };
 		CC032B842574E137002CE035 /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC032B832574E137002CE035 /* FileDropView.swift */; };
@@ -24,7 +23,8 @@
 		CC032BA12574EAE4002CE035 /* libpcre.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8B2574EAD5002CE035 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CC032BA22574EAE5002CE035 /* libpixman-1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8F2574EAD5002CE035 /* libpixman-1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CC032BA32574EAE6002CE035 /* libusb-1.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = CC032B8E2574EAD5002CE035 /* libusb-1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CC7C0FF4257B487C000512DD /* qemu-img in Resources */ = {isa = PBXBuildFile; fileRef = CC7C0FF3257B487C000512DD /* qemu-img */; };
+		CC73DF0626A93026005EDA07 /* qemu-img in CopyFiles */ = {isa = PBXBuildFile; fileRef = CC7C0FF3257B487C000512DD /* qemu-img */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC73DF0726A93028005EDA07 /* qemu-system-aarch64 in CopyFiles */ = {isa = PBXBuildFile; fileRef = CC032B722574DAB0002CE035 /* qemu-system-aarch64 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +45,17 @@
 				CC032B9E2574EAE1002CE035 /* libgmodule-2.0.0.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC73DF0526A93015005EDA07 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				CC73DF0626A93026005EDA07 /* qemu-img in CopyFiles */,
+				CC73DF0726A93028005EDA07 /* qemu-system-aarch64 in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -154,6 +165,7 @@
 				CC032B5B2574D9A6002CE035 /* Frameworks */,
 				CC032B5C2574D9A6002CE035 /* Resources */,
 				CC032B9B2574EADD002CE035 /* Embed Libraries */,
+				CC73DF0526A93015005EDA07 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -205,8 +217,6 @@
 				CC032B812574DE69002CE035 /* QEMU_EFI.fd in Resources */,
 				CC032B662574D9A7002CE035 /* Assets.xcassets in Resources */,
 				CC032B692574D9A7002CE035 /* Main.storyboard in Resources */,
-				CC7C0FF4257B487C000512DD /* qemu-img in Resources */,
-				CC032B732574DAB0002CE035 /* qemu-system-aarch64 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
